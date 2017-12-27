@@ -1,0 +1,71 @@
+a{
+	color:#753510;
+}
+
+a:hover{
+	color:#753510;
+	text-decoration: underline;
+}
+
+div.nav a{
+	font-size: x-large;
+}
+
+
+div.nav a:hover{
+	font-weight: bold;
+}
+
+#carousel-accueil .carousel-item{
+	height: 600px;
+}
+
+#carousel-accueil img{
+	height: 100%;
+}
+
+.col.card img{
+	height: 250px;
+}
+
+.card-title{
+	color:#753510;
+}
+
+footer{
+	background-color: #753510;
+}
+
+footer div.col-md-6{
+	text-align: center;
+}
+
+.homeTitleDiv{
+	text-align: center;
+	color:#753510;
+}
+
+.card-body{
+	text-align: center;
+}
+
+.btn-mine{
+	background-color: #753510;
+}
+
+
+#filterDiv{
+	background-color: #753510;
+	height: 50px;
+	color: white;
+	text-align: center;
+}
+
+.filterTitle{
+	font-weight: bold;
+	font-size: large;
+}
+
+#solde{
+	color: #753510;
+}
