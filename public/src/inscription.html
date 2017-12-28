@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/perso.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="css/ourStyle.css">
+        <title>S'inscrire | Chicket</title>   
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+
+                    <form>
+                        <p class="h5 text-center mb-4">S'inscrire</p>
+
+                        <div class="md-form">
+                            <i class="fa fa-user prefix"></i>
+                            <input type="text" id="name" class="form-control">
+                            <label for="name">Noms et Prénoms</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix"></i>
+                            <input type="text" id="email" class="form-control">
+                            <label for="email">Addresse mail</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-phone prefix"></i>
+                            <input type="text" id="phoneNumber" class="form-control">
+                            <label for="phoneNumber">Numéro de téléphone</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-bus prefix"></i>
+                            <select id="town" class="mdb-select ml-5">
+                                <option value="" disabled selected>Choisir votre ville</option>
+                                <option value="Yaounde">Yaoundé</option>
+                                <option value="Douala">Douala</option>
+                                <option value="Bertoua">Bertoua</option>
+                                <option value="Dschang">Bertoua</option>
+                            </select>
+                        </div>
+                        
+                        <div class="md-form">
+                            <i class="fa fa-car prefix"></i>
+                            <select id="district" class="mdb-select ml-5">
+                                <option value="" disabled selected>Choisir votre quartier</option>
+                                <option value="nlongkak">Nlongkak</option>
+                                <option value="douala">Etoudi</option>
+                                <option value="emombo">Emombo</option>
+                                <option value="fougerolles">Fougerolles</option>
+                            </select>
+                        </div>
+                        
+                        <div class="md-form">
+                            <i class="fa fa-address-book prefix"></i>
+                            <input type="text" id="street" class="form-control">
+                            <label for="street">Secteur</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-lock prefix"></i>
+                            <input type="password" id="password" class="form-control">
+                            <label for="password">Mot de passe</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-lock prefix"></i>
+                            <input type="password" id="confirmPassword" class="form-control">
+                            <label for="confirmPassword">Confirmation de mot de passe</label>
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-mine">S'inscrire</button>
+                        </div>
+                    </form>
+                    <div>
+                        <p>Vous avez déjà un compte? <a href="connexion.html">Connectez-vous</a></p>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/compiled.min.js"></script>
+        <script type="text/javascript" src="js/ourScript.js"></script>
+    </body>
+</html>
