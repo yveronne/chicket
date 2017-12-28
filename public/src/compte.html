@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mon compte | Chicket</title>
+        <link rel="stylesheet" type="text/css" href="css/perso.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="css/ourStyle.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <!--Header et barre de navigation-->
+            <div class="row">
+
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md">
+                            <img src="images/LogoChicket.png">
+                        </div>
+                        <div class="col-md align-self-end">
+                            <br/>
+                            <br/>
+                            <form class="form-inline md-form form-sm">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <input class="form-control w-75 ml-3" type="text" placeholder="Rechercher une offre" aria-label="Search">
+                            </form>
+                        </div>
+                        <div class="col-md align-self-center">
+                            <img src="images/compteIcone.png">
+                            <a href="compte.html">Mon compte</a>
+                            <img src="images/caddie.png">
+                            <a href="panier.html">Mon panier</a>	
+                        </div>
+                    </div>
+
+                    <div class="row nav">
+                        <div class="col-md"><a href="accueil.html" id="accueilLink">ACCUEIL</a></div>
+                        <div class="col-md"><a href="liste_offres.html" id="offerLink">LES OFFRES</a></div>
+                        <div class="col-md"><a href="liste_demandes_client.html" id="DemandLink">MES DEMANDES</a></div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>	
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="accueil.html">Accueil</a>><a href="compte.html">Mon compte</a>
+                        </div>				
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <p><h4>Informations personnelles</h4><i class="fa fa-pencil" aria-hidden="true"></i><a href="#">Modifier mes infos</a></p><br/>
+                            <div class="md-form">
+                                <input type="text" id="name" class="form-control" disabled="true">
+                                <label for="name">Noms et Prénoms</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="text" id="email" class="form-control" disabled="true">
+                                <label for="email">Adresse mail</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="text" id="email" class="form-control" disabled="true">
+                                <label for="email">Téléphone</label>
+                            </div>
+                            <div>
+                                <label>Ville</label>
+                                <select class="browser-default" disabled="true">
+                                    <option value="" disabled selected>Choisir une ville</option>
+                                    <option value="1">Bertoua</option>
+                                    <option value="2">Douala</option>
+                                    <option value="3">Yaoundé</option>
+                                </select>
+                            </div>
+                            <br/>
+                            <div>
+                                <label>Quartier</label>
+                                <select class="browser-default" disabled="true">
+                                    <option value="" disabled selected>Choisir un quartier</option>
+                                    <option value="1">Bastos</option>
+                                    <option value="2">Nlongkak</option>
+                                    <option value="3">Tsinga</option>
+                                </select>
+                            </div>
+                            <br/>
+                            <div class="md-form">
+                                <input type="text" id="sector" class="form-control" disabled="true">
+                                <label for="sector">Secteur</label>
+                            </div>
+                            <br/>
+
+                            <p class="h4"><i class="fa fa-credit-card" aria-hidden="true"></i> Compte PouletMoney</p><br/>
+                            <p>Solde du compte : <span id="solde" class="h5">1 259 </span><span>F CFA</span></p> 
+                            <div class="text-center">
+                                <button class="btn btn-mine">Recharger mon compte</button>
+                            </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            
+            <!--Footer-->
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <footer class="page-footer center-on-small-only">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <span><a href="accueil.html">Accueil</a> | <a href="liste_offres.html">Les offres</a> | <a href="#">Nous contacter</a></span><br/>
+                                <span>© 2017 Copyright: WABO, WAFO, WANE , YEPMO</span>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </footer>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/compiled.min.js"></script>
+        <script type="text/javascript" src="js/ourScript.js"></script>	
+    </body>
+</html>
