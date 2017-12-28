@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Créer une offre | Chicket</title>
+        <link rel="stylesheet" type="text/css" href="css/perso.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="css/ourStyle.css">
+
+    </head>
+    <body>
+        <div class="container-fluid">
+            <!--Header et barre de navigation-->
+            <div class="row">
+
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md">
+                            <img src="images/LogoChicket.png">
+                        </div>
+                        <div class="col-md align-self-end">
+                            <br/>
+                            <br/>
+                            <form class="form-inline md-form form-sm">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <input class="form-control w-75 ml-3" type="text" placeholder="Rechercher une offre" aria-label="Search">
+                            </form>
+                        </div>
+                        <div class="col-md align-self-center">
+                            <img src="images/compteIcone.png">
+                            <a href="compte.html">Mon compte</a>
+                            <img src="images/caddie.png">
+                            <a href="panier.html">Mon panier</a>	
+                        </div>
+                    </div>
+
+                    <div class="row nav">
+                        <div class="col-md"><a href="accueil.html" id="accueilLink">ACCUEIL</a></div>
+                        <div class="col-md"><a href="liste_offres_admin.html" id="offerLink">LES OFFRES</a></div>
+                        <div class="col-md"><a href="liste_prestations.html" id="prestationLink">LES PRESTATIONS</a></div>
+                        <div class="col-md"><a href="liste_demandes.html" id="DemandLink">LES DEMANDES</a></div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>	
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="accueil.html">Accueil</a>><a href="liste_offres_admin.html">Offres</a>><a href="creation_offres.html">Créer une offre</a>
+                        </div>				
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <form>
+                                <p class="h4">Créer une offre</p><br/>
+                                <div class="md-form">
+                                    <select id="chickenType" class="mdb-select">
+                                        <option value="" disabled selected>Type de poulet</option>
+                                        <option value="1">Poulet de ferme</option>
+                                        <option value="2">Pondeuse</option>
+                                        <option value="3">Poule du village</option>
+                                    </select>
+                                </div>
+                                <br/>
+                                
+                                <div class="md-form">
+                                    <select id="chickenSize" class="mdb-select">
+                                        <option value="" disabled selected>Grosseur</option>
+                                        <option value="1">Petit</option>
+                                        <option value="2">Moyen</option>
+                                        <option value="3">Gros</option>
+                                        <option value="4">Très gros</option>
+                                    </select>
+                                </div>
+                                <br/>
+
+                                <div class="file-field md-form">
+                                    <div class="btn btn-mine btn-sm">
+                                        <span>Url de l'image</span>
+                                        <input type="file">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Ajoutez une image">
+                                    </div>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" id="quantity" class="form-control">
+                                    <label for="quantity">Quantité en stock</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" id="price" class="form-control">
+                                    <label for="price">Prix unitaire</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" id="reduction" class="form-control">
+                                    <label for="reduction">Possibilité de réduction</label>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-mine">Créer l'offre</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-4"></div>
+
+                    </div>						
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+
+            <!--Footer-->
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <footer class="page-footer center-on-small-only">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <span><a href="accueil.html">Accueil</a> | <a href="liste_offres_admin.html">Les offres</a> | <a href="#">Nous contacter</a></span><br/>
+                                <span>© 2017 Copyright: WABO, WAFO, WANE , YEPMO</span>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </footer>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/compiled.min.js"></script>
+        <script type="text/javascript" src="js/ourScript.js"></script>
+    </body>
+</html>

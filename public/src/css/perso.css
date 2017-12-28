@@ -1630,7 +1630,8 @@ pre code {
  background-color:rgba(0,0,0,.05)
 }
 .table-hover tbody tr:hover {
- background-color:rgba(0,0,0,.075)
+ //background-color:rgba(0,0,0,.075)
+ background-color: rgba(254,174,93,0.9);
 }
 .table-primary,.table-primary>td,.table-primary>th {
  background-color:#b8daff

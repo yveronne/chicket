@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mon Panier | Chicket</title>
+        <link rel="stylesheet" type="text/css" href="css/perso.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="css/ourStyle.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <!--Header et barre de navigation-->
+            <div class="row">
+
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md">
+                            <img src="images/LogoChicket.png">
+                        </div>
+                        <div class="col-md align-self-end">
+                            <br/>
+                            <br/>
+                            <form class="form-inline md-form form-sm">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <input class="form-control w-75 ml-3" type="text" placeholder="Rechercher une offre" aria-label="Search">
+                            </form>
+                        </div>
+                        <div class="col-md align-self-center">
+                            <img src="images/compteIcone.png">
+                            <a href="compte.html">Mon compte</a>
+                            <img src="images/caddie.png">
+                            <a href="panier.html">Mon panier</a>	
+                        </div>
+                    </div>
+
+                    <div class="row nav">
+                        <div class="col-md"><a href="accueil.html" id="accueilLink">ACCUEIL</a></div>
+                        <div class="col-md"><a href="liste_offres.html" id="offerLink">LES OFFRES</a></div>
+                        <div class="col-md"><a href="liste_demandes_client.html" id="DemandLink">MES DEMANDES</a></div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>	
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="accueil.html">Accueil</a>><a href="panier.html">Mon panier</a>
+                        </div>				
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p><h4>Mon panier</h4></p>
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Type de poulet</th>
+                                        <th>Grosseur</th>
+                                        <th>Quantité</th>
+                                        <th>Prix unitaire (en F CFA)</th>
+                                        <th>Réduction (en F CFA)</th>
+                                        <th>Prestations à effectuer</th>
+                                        <th>Supprimer du panier</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Pondeuse</td>
+                                        <td>Moyen</td>
+                                        <td>50</td>
+                                        <td>2 975</td>
+                                        <td>2000</td>
+                                        <td>Plumer <br/> Fumer <br/></td>
+                                        <td><a><i class="fa fa-remove"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Pondeuse</td>
+                                        <td>Moyen</td>
+                                        <td>50</td>
+                                        <td>2 975</td>
+                                        <td>2000</td>
+                                        <td>Plumer <br/> Fumer <br/></td>
+                                        <td><a><i class="fa fa-remove"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Pondeuse</td>
+                                        <td>Moyen</td>
+                                        <td>50</td>
+                                        <td>2 975</td>
+                                        <td>2000</td>
+                                        <td>Plumer <br/> Fumer <br/></td>
+                                        <td><a><i class="fa fa-remove"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>Pondeuse</td>
+                                        <td>Moyen</td>
+                                        <td>50</td>
+                                        <td>2 975</td>
+                                        <td>2000</td>
+                                        <td>Plumer <br/> Fumer <br/></td>
+                                        <td><a><i class="fa fa-remove"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="btn btn-mine" data-toggle="modal" data-target="#modalDetails">Valider mes achats</button>
+                        </div>
+
+                        <!--Modal permettant de voir le net à payer et la date limite de livraison-->
+                        <div class="modal fade" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="mymodalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title w-100 font-bold">Informations sur les achats</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body mx-3">
+                                        <div class="md-form">
+                                            <h5>Net à payer (en F CFA)</h5>
+                                            <input value="18 750" type="text" id="amount" class="form-control" disabled="true">
+                                        </div>
+                                        <div class="md-form">
+                                            <h5>Date limite de livraison</h5>
+                                            <input value="2018-10-09" type="date" id="date" class="form-control" disabled="true">
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer d-flex justify-content-center">
+                                        <button class="btn btn-mine">Payer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/compiled.min.js"></script>
+        <script type="text/javascript" src="js/ourScript.js"></script>
+    </body>
+</html>

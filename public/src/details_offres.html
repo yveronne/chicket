@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Détails | Chicket</title>
+        <link rel="stylesheet" type="text/css" href="css/perso.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="css/ourStyle.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <!--Header et barre de navigation-->
+            <div class="row">
+
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md">
+                            <img src="images/LogoChicket.png">
+                        </div>
+                        <div class="col-md align-self-end">
+                            <br/>
+                            <br/>
+                            <form class="form-inline md-form form-sm">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <input class="form-control w-75 ml-3" type="text" placeholder="Rechercher une offre" aria-label="Search">
+                            </form>
+                        </div>
+                        <div class="col-md align-self-center">
+                            <img src="images/compteIcone.png">
+                            <a href="compte.html">Mon compte</a>
+                            <img src="images/caddie.png">
+                            <a href="panier.html">Mon panier</a>	
+                        </div>
+                    </div>
+
+                    <div class="row nav offer">
+                        <div class="col-md"><a href="accueil.html" id="accueilLink">ACCUEIL</a></div>
+                        <div class="col-md"><a href="liste_offres.html" id="offerLink">LES OFFRES</a></div>
+                        <div class="col-md"><a href="liste_demandes_client.html" id="DemandLink">MES DEMANDES</a></div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>	
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="accueil.html">Accueil</a>><a href="liste_offres.html">Liste des offres</a>><a href="details_offre.html">Détails de l'offre</a>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p class="h4">Détails de l'offre</p><br/>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <img src="images/pondeuse.jpg" class="img-fluid">
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5>Type de poulet</h5> Pondeuse <br>
+                                            <h5>Grosseur</h5> Très gros (7Kg) <br>
+                                            <h5>Quantité en stock</h5> 25 <br>
+                                            <h5>Prix unitaire</h5> 7 825 F CFA <br>
+                                            <h5>Possibilité de réduction</h5> 500 par poulets à partir de 10 poulets <br>
+                                            <h5>Date de publication</h5> 27/01/2018 <br>
+                                            <div class="text-center">
+                                                <button class="btn btn-mine" data-toggle="modal" data-target="#modalAddToCart">Choisir cette offre</button>
+                                            </div>
+
+                                            <!-- Modal d'ajout au panier-->
+                                            <div class="modal fade" id="modalAddToCart" tabindex="-1" role="dialog" aria-labelledby="mymodLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header text-center">
+                                                            <h4 class="modal-title w-100 font-bold">Ajouter au panier</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="modal-body mx-3">
+                                                            <div class="md-form">
+                                                                <input value="Pondeuse" type="text" id="chickenType" class="form-control" disabled="true">
+                                                                <label class="active" for="chickenType">Type de poulet</label>
+                                                            </div>
+                                                            <div class="md-form">
+                                                                <input value="Très gros (7Kg)" type="text" id="chickenSize" class="form-control" disabled="true">
+                                                                <label class="active" for="chickenSize">Grosseur</label>
+                                                            </div>
+                                                            <div class="md-form">
+                                                                <input value="25" type="text" id="offerQuantity" class="form-control" disabled="true">
+                                                                <label class="active" for="offerQuantity">Quantité en stock</label>
+                                                            </div>
+                                                            <div class="md-form">
+                                                                <input value="7 825" type="text" id="offerPrice" class="form-control" disabled="true">
+                                                                <label class="active" for="offerPrice">Prix unitaire (en F CFA)</label>
+                                                            </div>
+                                                            <div class="md-form">
+                                                                <input value="500 par poulets à partir de 10 poulets" type="text" id="offerReduction" class="form-control" disabled="true">
+                                                                <label class="active" for="offerReduction">Possibilité de réduction</label>
+                                                            </div>
+                                                            <div class="md-form">
+                                                                <input type="text" id="clientQuantity" class="form-control">
+                                                                <label class="active" for="clientQuantity">Quantité</label>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="checkbox" id="deplumageCheckbox">
+                                                                <label for="deplumageCheckbox">Déplumer les poulets</label>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="checkbox" id="decoupageCheckbox">
+                                                                <label for="decoupageCheckbox">Découper les poulets</label>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="checkbox" id="fumageCheckbox">
+                                                                <label for="fumageCheckbox">Fumer les poulets</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-footer d-flex justify-content-center">
+                                                            <button class="btn btn-mine">Ajouter au panier</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <!--Fin du modal d'ajout au panier-->
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <!--Footer-->
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <footer class="page-footer center-on-small-only">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <span><a href="accueil.html">Accueil</a> | <a href="liste_offres.html">Les offres</a> | <a href="#">Nous contacter</a></span><br/>
+                                <span>© 2017 Copyright: WABO, WAFO, WANE , YEPMO</span>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </footer>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/compiled.min.js"></script>
+        <script type="text/javascript" src="js/ourScript.js"></script>
+    </body>
+</html>

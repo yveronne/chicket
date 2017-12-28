@@ -1,3 +1,7 @@
+/*body{
+    background-color: #FEAE5D;
+}
+*/
 a{
 	color:#753510;
 }
@@ -5,6 +9,12 @@ a{
 a:hover{
 	color:#753510;
 	text-decoration: underline;
+}
+
+.nav{
+    height: 70px;
+    box-shadow: 3px 3px 10px;
+    background-color: #FEAE5D;
 }
 
 div.nav a{
@@ -22,6 +32,10 @@ div.nav a:hover{
 
 #carousel-accueil img{
 	height: 100%;
+}
+
+.card{
+    background-color: #FEAE5D;
 }
 
 .col.card img{

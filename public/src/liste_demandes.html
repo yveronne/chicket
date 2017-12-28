@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Demandes postées | Chicket</title>
+        <link rel="stylesheet" type="text/css" href="css/perso.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="css/ourStyle.css">	
+    </head>
+    <body>
+        <div class="container-fluid">
+            <!--Header et barre de navigation-->
+            <div class="row">
+
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md">
+                            <img src="images/LogoChicket.png">
+                        </div>
+                        <div class="col-md align-self-end">
+                            <br/>
+                            <br/>
+                            <form class="form-inline md-form form-sm">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <input class="form-control w-75 ml-3" type="text" placeholder="Rechercher une offre" aria-label="Search">
+                            </form>
+                        </div>
+                        <div class="col-md align-self-center">
+                            <img src="images/compteIcone.png">
+                            <a href="compte.html">Mon compte</a>
+                            <img src="images/caddie.png">
+                            <a href="panier.html">Mon panier</a>	
+                        </div>
+                    </div>
+
+                    <div class="row nav">
+                        <div class="col-md"><a href="accueil.html" id="accueilLink">ACCUEIL</a></div>
+                        <div class="col-md"><a href="liste_offres_admin.html" id="offerLink">LES OFFRES</a></div>
+                        <div class="col-md"><a href="liste_prestations.html" id="prestationLink">LES PRESTATIONS</a></div>
+                        <div class="col-md"><a href="liste_demandes.html" id="DemandLink">LES DEMANDES</a></div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>	
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="accueil.html">Accueil</a>><a href="liste_demandes.html">Liste des demandes</a>
+                        </div>				
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="filterDiv">Filtrer par:</div><br/>
+
+                                    <div class="filterTitle">Type de poulet</div>
+                                    <div>
+                                        <input type="checkbox" id="pondeuseCheckbox">
+                                        <label for="pondeuseCheckbox">Pondeuses</label> <br/>
+                                        <input type="checkbox" id="fermeCheckbox">
+                                        <label for="fermeCheckbox">Poulets de ferme</label> <br/>
+                                        <input type="checkbox" id="villageCheckbox">
+                                        <label for="villageCheckbox">Poules du village</label><br/>
+                                    </div>
+                                    <br/>		
+
+                                    <div class="filterTitle">Quantité nécessaire</div>
+                                    <div class="range-field">
+                                        <input type="range" min="0" max="200"/>
+                                    </div>
+                                    <div>(Choisir la quantité maximale)</div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Type de poulet</th>
+                                        <th>Quantité nécessaire</th>
+                                        <th>Date de publication</th>
+                                        <th>Supprimer la demande</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Gros</td>
+                                        <td>23</td>
+                                        <td>12/07/2017</td>
+                                        <td><a><i class="fa fa-remove"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Gros</td>
+                                        <td>23</td>
+                                        <td>12/07/2017</td>
+                                        <td><a><i class="fa fa-remove"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Gros</td>
+                                        <td>23</td>
+                                        <td>12/07/2017</td>
+                                        <td><a><i class="fa fa-remove"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <!--Footer-->
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <footer class="page-footer center-on-small-only">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <span><a href="accueil.html">Accueil</a> | <a href="liste_offres_admin.html">Les offres</a> | <a href="#">Nous contacter</a></span><br/>
+                                <span>© 2017 Copyright: WABO, WAFO, WANE , YEPMO</span>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </footer>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/compiled.min.js"></script>
+        <script type="text/javascript" src="js/ourScript.js"></script>
+    </body>
+</html>
