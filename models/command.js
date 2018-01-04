@@ -1,9 +1,13 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import mongoose, { Schema } from 'mongoose';
+ var mongoose    =   require("mongoose");
+mongoose.connect('mongodb://localhost:27017/chicketbd');
+
+var mongoSchema =   mongoose.Schema;
+
 
 var commandSchema = new Schema({
     quantity: Number,
@@ -16,10 +20,9 @@ var commandSchema = new Schema({
     prestationID:{
         type: Schema.Types.ObjectId, ref:'prestation'
     },
-    caddyID:{
-        type: Schema.Types.ObjectId, ref:'caddy'
+    publicationDate: {
+        type: Date, default: Date.now
     }
 });
 
-export default mongoose.model('command', commandSchema);
-
+module.exports = mongoose.model('command', commandSchema);

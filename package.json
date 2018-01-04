@@ -9,11 +9,16 @@
     "browser"
   ],
   "author": "veronne",
-  "contributors": [],
+  "contributors": ["wanedenis"],
   "dependencies": {
     "consign": "^0.1.6",
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "mongoose": "^5.0.0-rc1"
+    "express-joi-validator": "^2.0.0",
+    "joi": "^13.0.2",
+    "mongoose": "^4.13.8",
+    "node-datetime": "^2.0.3",
+    "payload-validator": "^1.0.4"
   },
   "main": "main.js",
   "scripts": {
