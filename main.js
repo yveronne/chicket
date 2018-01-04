@@ -8,7 +8,7 @@ var consign     =   require("consign");
 var app         =   express();
 var bodyParser  =   require("body-parser");
 
-const PORT = 3000;
+const PORT = 3500;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended" : false}));

@@ -8,9 +8,9 @@ const Joi = require('joi');
 const expressJoi = require('express-joi-validator');
 var dateTime = require('node-datetime');
 
-var userDB     =   require("./../models/user.js");
-
-var pmDB     =   require("./../models/historic.js");
+import mongoose from 'mongoose';
+import userDB from './../models/user.js';
+import pmDB from './../models/historic.js';
 
 var prestationDB     =   require("./../models/prestation.js");
 
@@ -166,7 +166,7 @@ router.route("/users/:email")
 
       res.json(response);
 
-    }) //update the data of the user
+    }); //update the data of the user
 
 router.route("/users")
     .get(function(req,res){ //Get all the users
@@ -205,14 +205,12 @@ router.route("/users")
                                 .update(req.body.password)
                                 .digest('base64');
 
-              db.firstname = req.body.firstname;
-              db.lastname = req.body.lastname;
+              db.firstName = req.body.firstName;
+              db.lastName = req.body.lastName;
               db.phoneNumber = req.body.phoneNumber;
               db.city = req.body.city;
               db.district = req.body.district;
               db.sector = req.body.sector;
-              db.firstname = req.body.firstname;
-
               db.balance = 200000;
 
               db.save(function(err){
@@ -222,17 +220,13 @@ router.route("/users")
 
                   } else {
 
-                      //get the email of the last user add
-                      var Client = userDB.find({}).sort({_id:-1}).limit(1);
-                      var emailUser = Client.email;
-
-                      dbPM.transactionType = "Crédit de Bienvenu";
+                      dbPM.transactionType = "Solde de départ du compte PouletMoney";
                       dbPM.amount = 200000;
                       dbPM.date = getDateNow();
                       dbPM.previousBalance = 0;
                       dbPM.newBalance = 200000;
-                      dbPM.email = emailUser;
-
+                      dbPM.email = db.email;
+                      
                       dbPM.save(function(er){
 
                         if (er) {
@@ -241,7 +235,7 @@ router.route("/users")
 
                         }else {
 
-                          response = {"error" : false,"message" : "User add with success and her balance is 200000 FCFA!"};
+                          response = {"error" : false,"message" : "User added successfully and his balance is 200000 FCFA!"};
 
                         }
 

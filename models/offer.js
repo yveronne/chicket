@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
- var mongoose    =   require("mongoose");
- mongoose.connect('mongodb://localhost:27017/chicketbd');
+ import mongoose, { Schema } from 'mongoose';
 
- var Schema =   mongoose.Schema;
-
+var promise = mongoose.connect('mongodb://localhost/chicket', {
+    useMongoClient: true
+});
 
 //Définition du schéma
 var offerSchema = new Schema ({
