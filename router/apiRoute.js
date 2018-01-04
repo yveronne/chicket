@@ -89,7 +89,6 @@ const HistoriquePM_model = Joi.object().keys({
 });
 
 
-
 router.get("/",function(req,res){
 
     res.json({"error" : false,"message" : "Hello World"});

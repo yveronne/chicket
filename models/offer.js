@@ -6,7 +6,7 @@
  var mongoose    =   require("mongoose");
  mongoose.connect('mongodb://localhost:27017/chicketbd');
 
- var mongoSchema =   mongoose.Schema;
+ var Schema =   mongoose.Schema;
 
 
 //Définition du schéma
@@ -18,7 +18,7 @@ var offerSchema = new Schema ({
     publicationDate : {
         type : Date , default : Date.now
     },
-    reductionCondition : String,
+    reductionCondition : Number,
     reductionAmout : Number
 });
 
