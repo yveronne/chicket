@@ -11,8 +11,8 @@ var promise = mongoose.connect('mongodb://localhost/chicket', {
 
 var commandSchema = new Schema({
     quantity: Number,
-    email: {
-        type: String, ref: 'user'
+    clientID: {
+        type: Schema.Types.ObjectId, ref: 'user'
     },
     offerID:{
         type: Schema.Types.ObjectId, ref:'offer'
@@ -25,4 +25,4 @@ var commandSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('command', commandSchema);
+export default mongoose.model('command', commandSchema);

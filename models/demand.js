@@ -16,9 +16,9 @@ var demandSchema = new Schema({
     publicationDate: {
         type: Date, default: Date.now
     },
-    email:{
-        type: String, ref:'user'
+    clientID:{
+        type: Schema.Types.ObjectId, ref:'user'
     }
 });
 
-module.exports = mongoose.model('demand', demandSchema);
+export default mongoose.model('demand', demandSchema);

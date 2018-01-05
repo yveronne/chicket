@@ -23,4 +23,4 @@ var prestationSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('prestation', prestationSchema);
+export default mongoose.model('prestation', prestationSchema);

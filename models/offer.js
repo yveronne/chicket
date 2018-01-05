@@ -23,5 +23,4 @@ var offerSchema = new Schema ({
 });
 
 //Exportation du modèle
-
-module.exports = mongoose.model('offer', offerSchema);
+export default mongoose.model('offer', offerSchema);

@@ -11,14 +11,10 @@ var dateTime = require('node-datetime');
 import mongoose from 'mongoose';
 import userDB from './../models/user.js';
 import pmDB from './../models/historic.js';
-
-var prestationDB     =   require("./../models/prestation.js");
-
-var commandDB     =   require("./../models/command.js");
-
-var demandDB     =   require("./../models/demand.js");
-
-var offerDB     =   require("./../models/offer.js");
+import prestationDB from './../models/prestation.js';
+import commandDB from './../models/command.js';
+import demandDB from './../models/demand.js';
+import offerDB from './../models/offer.js';
 
 /**
 Get the Date now
@@ -34,11 +30,11 @@ function getDateNow(){
 const user_model = Joi.object().keys({
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
-    firstName: Joi.string().required(),
+    firstName: Joi.string(),
     lastName: Joi.string().required(),
     phoneNumber: Joi.string(),
-    city: Joi.string(),
-    district: Joi.string(),
+    city: Joi.string().required(),
+    district: Joi.string().required(),
     sector: Joi.string()
 });
 
@@ -54,7 +50,7 @@ const offer_model = Joi.object().keys({
 
 const prestation_model = Joi.object().keys({
     name: Joi.string().required(),
-    status: Joi.string().required(),
+    status: Joi.boolean(),
     unitPrice: Joi.number().required(),
     chickenQuantity: Joi.number().required(),
     publicationDate: Joi.date().required(),
@@ -68,11 +64,11 @@ const demande_model = Joi.object().keys({
     chickenSize: Joi.string().required(),
     quantity: Joi.number().required(),
     publicationDate: Joi.date().required(),
-    email: Joi.string().required()
+    clientID: Joi.string().required()
 });
 
 const commande_model = Joi.object().keys({
-    email: Joi.string().required(),
+    clientID: Joi.string().required(),
     offerID: Joi.string().required(),
     quantity: Joi.number().required(),
     prestationID: Joi.string().required(),
@@ -80,7 +76,7 @@ const commande_model = Joi.object().keys({
 });
 
 const HistoriquePM_model = Joi.object().keys({
-    email: Joi.string().required(),
+    clientID: Joi.string().required(),
     transactionType: Joi.string().required(),
     amount: Joi.number().required(),
     previousBalance: Joi.number().required(),
@@ -97,12 +93,12 @@ router.get("/",function(req,res){
 
 
 
-router.route("/users/:email")
-    .get(function(req,res){ //Get the by email
+router.route("/users/:id")
+    .get(function(req,res){ //Get the user by id
 
         var response = {};
 
-        userDB.find({'email': req.params.email},function(err,data){
+        userDB.findById(req.params.id,function(err,data){
 
             if(err) {
                 response = {"error" : true,"message" : err.errmsg};
@@ -128,14 +124,17 @@ router.route("/users/:email")
 
         }else {
 
-          userDB.find({'email': req.params.email},function(err,data){
+          userDB.findById(req.params.id,function(err,data){
 
             if(err) {
                 response = {"error" : true,"message" : err.errmsg};
             } else {
 
                 data.email = req.body.email;
-                data.password = req.body.password;
+                data.password = require('crypto')
+                                .createHash('sha1')
+                                .update(req.body.password)
+                                .digest('base64');
                 data.lastName = req.body.lastName;
                 data.firstName = req.boddy.firstName;
                 data.phoneNumber = req.body.phoneNumber;
@@ -182,7 +181,9 @@ router.route("/users")
             res.json(response);
         });
 
-    })
+    });
+    
+router.route("/register")
     .post(function(req,res){ //add a new user
 
         if (req.body) {
@@ -225,7 +226,7 @@ router.route("/users")
                       dbPM.date = getDateNow();
                       dbPM.previousBalance = 0;
                       dbPM.newBalance = 200000;
-                      dbPM.email = db.email;
+                      dbPM.clientID = db._id;
                       
                       dbPM.save(function(er){
 

@@ -16,10 +16,10 @@ var historicSchema = new Schema({
     },
     previousBalance: Number,
     newBalance: Number,
-    email: {
-        type:String, ref:'user'
+    clientID: {
+        type: Schema.Types.ObjectId, ref:'user'
     }
 });
 
 
-module.exports = mongoose.model('historic',historicSchema);
+export default mongoose.model('historicr', historicSchema);
