@@ -39,13 +39,13 @@ const user_model = Joi.object().keys({
 });
 
 const offer_model = Joi.object().keys({
-    chichenType: Joi.string().required(),
+    chickenType: Joi.string().required(),
     chickenSize: Joi.string().required(),
     unitPrice: Joi.number().required(),
     quantity: Joi.number().required(),
     publicationDate: Joi.date(),
     reductionCondition: Joi.number(),
-    reductionAmout: Joi.number().required()
+    reductionAmount: Joi.number().required()
 });
 
 const prestation_model = Joi.object().keys({
@@ -55,7 +55,7 @@ const prestation_model = Joi.object().keys({
     chickenQuantity: Joi.number().required(),
     publicationDate: Joi.date(),
     reductionCondition: Joi.number(),
-    reductionAmout: Joi.number(),
+    reductionAmount: Joi.number(),
     duration: Joi.number()
 });
 
@@ -322,13 +322,13 @@ router.route("/offers/:id")
 
                         } else {
 
-                            data.chichenType = req.body.chichenType;
+                            data.chickenType = req.body.chickenType;
                             data.chickenSize = req.body.chickenSize;
                             data.unitPrice = req.body.unitPrice;
                             data.quantity = req.body.quantity;
                             data.publicationDate = getDateNow();
                             data.reductionCondition = req.body.reductionCondition;
-                            data.reductionAmout = req.body.reductionAmout;
+                            data.reductionAmount = req.body.reductionAmount;
 
                             data.save(function (err) {
 
@@ -392,13 +392,13 @@ router.route("/offers/create")
 
                 } else {
 
-                    db.chichenType = req.body.chichenType;
+                    db.chickenType = req.body.chickenType;
                     db.chickenSize = req.body.chickenSize;
                     db.unitPrice = req.body.unitPrice;
                     db.quantity = req.body.quantity;
                     db.publicationDate = getDateNow();
                     db.reductionCondition = req.body.reductionCondition;
-                    db.reductionAmout = req.body.reductionAmout;
+                    db.reductionAmount = req.body.reductionAmount;
 
                     db.save(function (err) {
 
@@ -477,7 +477,7 @@ router.route("/prestations/:id")
                             data.chickenQuantity = req.body.chickenQuantity;
                             data.date = getDateNow();
                             data.duration = req.body.duration;
-                            data.reductionAmout = req.body.reductionAmout;
+                            data.reductionAmount = req.body.reductionAmount;
                             data.reductionCondition = req.body.reductionCondition;
 
                             data.save(function (err) {
@@ -548,7 +548,7 @@ router.route("/prestations/create")
                     db.chickenQuantity = req.body.chickenQuantity;
                     db.date = getDateNow();
                     db.duration = req.body.duration;
-                    db.reductionAmout = req.body.reductionAmout;
+                    db.reductionAmount = req.body.reductionAmount;
                     db.reductionCondition = req.body.reductionCondition;
 
                     db.save(function (err) {
@@ -578,12 +578,12 @@ router.route("/prestations/create")
 
 
 
-router.route("/demands/:id")
-        .get(function (req, res) { //Get the demand by ID
+router.route("/demands/:clientID")
+        .get(function (req, res) { //Get the demands of a client
 
             var response = {};
 
-            demandDB.findById(req.params.id, function (err, data) {
+            demandDB.find({"clientID" : req.params.clientID}, function (err, data) {
 
                 if (err) {
                     response = {"error": true, "message": err.errmsg};
@@ -593,7 +593,9 @@ router.route("/demands/:id")
                 res.json(response);
             });
 
-        })
+        });
+
+router.route('/demands/:id')
         .put(function (req, res) { //update a demand
 
             if (req.body) {
@@ -683,7 +685,7 @@ router.route("/demands/:id")
                 res.json(response);
             }
 
-        }); //delete a demands
+        }); 
 
 
 router.route("/demands")
@@ -752,12 +754,12 @@ router.route("/demands/create")
 
 
 
-router.route("/commands/:id")
+router.route("/commands/:clientID")
         .get(function (req, res) { //Get the command by ID
 
             var response = {};
 
-            commandDB.findById(req.params.id, function (err, data) {
+            commandDB.find({"clientID" : req.params.clientID}, function (err, data) {
 
                 if (err) {
                     response = {"error": true, "message": err.errmsg};
@@ -767,7 +769,9 @@ router.route("/commands/:id")
                 res.json(response);
             });
 
-        })
+        });
+        
+router.route("/commands/:id")
         .put(function (req, res) { //update a command
 
             if (req.body) {
@@ -787,7 +791,7 @@ router.route("/commands/:id")
 
                 } else {
 
-                    findById(req.params.id, function (err, data) {
+                    commandDB.findById(req.params.id, function (err, data) {
 
                         if (err) {
 
@@ -810,7 +814,7 @@ router.route("/commands/:id")
 
                                 } else {
 
-                                    response = {"error": false, "message": "Command update with success!"};
+                                    response = {"error": false, "message": "Command updated with success!"};
                                     res.json(response);
                                 }
 
@@ -828,7 +832,37 @@ router.route("/commands/:id")
 
             }
 
-        });
+        })
+        
+        .delete(function (req, res) {
+
+            var response = {};
+
+            if (req.params.id) {
+
+                commandDB.findById(req.params.id, function (err, data) {
+                    if (err) {
+                        response = {"error": true, "message": err.errmsg};
+                    } else {
+
+                        commandDB.remove({"_id": req.params.id}, function (err) {
+                            if (err) {
+                                response = {"error": true, "message": err.errmsg};
+                            } else {
+                                response = {"error": true, "message": "Command associated with " + req.params.id + " is deleted"};
+                            }
+                            res.json(response);
+                        });
+                    }
+                });
+
+            } else {
+
+                response = {"error": true, "message": "body is empty"};
+                res.json(response);
+            }
+
+        }); //delete a command
 
 router.route("/commands")
         .get(function (req, res) { //Get all the commands
@@ -845,7 +879,9 @@ router.route("/commands")
                 res.json(response);
             });
 
-        })
+        });
+
+router.route("/commands/create")
         .post(function (req, res) { //add a new command
 
             if (req.body) {
@@ -874,7 +910,7 @@ router.route("/commands")
 
                         } else {
 
-                            response = {"error": false, "message": "Command add with success!"};
+                            response = {"error": false, "message": "Command added with success!"};
                             res.json(response);
                         }
 
@@ -893,11 +929,11 @@ router.route("/commands")
 
 
 
-router.route("/historic/:id")
+router.route("/historic/:clientID")
         .get(function (req, res) { //Get the historic by the client id
 
             var response = {};
-            pmDB.findById(req.params.id, function (err, data) {
+            pmDB.find({"clientID" : req.params.clientID}, function (err, data) {
 
                 if (err) {
                     response = {"error": true, "message": err.errmsg};
@@ -972,6 +1008,21 @@ router.route("/historic")
             }
 
         });
+        
+router.route("/caddy/:clientID")
+        .get(function(req,res){
+            var response = {};
+            
+            commandDB.find({"clientID" : req.params.clientID}, function(err, data){
+                if(err) {
+                    response = {"error":true, "message":err.errmsg};
+                } else {
+                    response = {"error": false, "message": data};
+                }
+                res.json(response);
+            });
+            
+});
 
 
 
