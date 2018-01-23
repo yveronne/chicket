@@ -87,7 +87,8 @@ const HistoriquePM_model = Joi.object().keys({
 
 router.get("/", function (req, res) {
 
-    res.json({"error": false, "message": "Hello World"});
+    //res.json({"error": false, "message": "Hello World"});
+    res.render('home', {title : 'Accueil | Chicket'});
 
 });
 
@@ -375,6 +376,7 @@ router.route("/offers")
             });
 
         });
+        
 
 router.route("/offers/create")
         .post(function (req, res) { //add a new offer
@@ -1023,7 +1025,6 @@ router.route("/caddy/:clientID")
             });
             
 });
-
 
 
 module.exports = router;

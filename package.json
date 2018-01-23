@@ -9,12 +9,15 @@
     "browser"
   ],
   "author": "veronne",
-  "contributors": ["wanedenis"],
+  "contributors": [
+    "wanedenis"
+  ],
   "dependencies": {
-    "consign": "^0.1.6",
     "body-parser": "^1.18.2",
+    "consign": "^0.1.6",
     "express": "^4.16.2",
     "express-joi-validator": "^2.0.0",
+    "jade": "^1.11.0",
     "joi": "^13.0.2",
     "mongoose": "^4.13.8",
     "node-datetime": "^2.0.3",

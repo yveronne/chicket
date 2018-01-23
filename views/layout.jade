@@ -1,0 +1,24 @@
+//- 
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+     
+
+doctype html
+html
+    head
+        title=title
+        link(rel='stylesheet', href='src/css/bootstrap.css')
+        link(rel='stylesheet', href='src/css/perso.css')
+        link(rel='stylesheet', href='src/css/font-awesome-4.7.0/css/font-awesome.css')
+        link(rel='stylesheet', href='src/css/ourStyle.css')
+    body
+        div.container-fluid
+            include header.jade
+            
+            block content
+            
+            include footer.jade
+            
+        script(type='text/javascript', src='src/js/compiled.min.js')
+        script(type='text/javascript', src='src/js/ourScript.js')
