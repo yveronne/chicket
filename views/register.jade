@@ -1,0 +1,71 @@
+//- 
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+
+extends layout
+
+block content
+     
+    .row
+        .col-md-1
+        .col-md-10
+            .row
+                .col-md-12
+                    a(href='/') Accueil
+                    | >
+                    a(href='/register') S'inscrire
+            br
+            .row
+                .col-md-4
+                .col-md-4
+                    form
+                        p.h5.text-center.mb-4 S'inscrire
+                        .md-form
+                            i.fa.fa-user.prefix
+                            input#name.form-control(type='text')
+                            label(for='name') Noms et Prénoms
+                        .md-form
+                            i.fa.fa-envelope.prefix
+                            input#email.form-control(type='text')
+                            label(for='email') Addresse mail
+                        .md-form
+                            i.fa.fa-phone.prefix
+                            input#phoneNumber.form-control(type='text')
+                            label(for='phoneNumber') Numéro de téléphone
+                        .md-form
+                            i.fa.fa-bus.prefix
+                            select#town.mdb-select.ml-5
+                                option(value='', disabled='', selected='') Choisir votre ville
+                                option(value='Yaounde') Yaoundé
+                                option(value='Douala') Douala
+                                option(value='Bertoua') Bertoua
+                                option(value='Dschang') Bertoua
+                        .md-form
+                            i.fa.fa-car.prefix
+                            select#district.mdb-select.ml-5
+                                option(value='', disabled='', selected='') Choisir votre quartier
+                                option(value='nlongkak') Nlongkak
+                                option(value='douala') Etoudi
+                                option(value='emombo') Emombo
+                                option(value='fougerolles') Fougerolles
+                        .md-form
+                            i.fa.fa-address-book.prefix
+                            input#street.form-control(type='text')
+                            label(for='street') Secteur
+                        .md-form
+                            i.fa.fa-lock.prefix
+                            input#password.form-control(type='password')
+                            label(for='password') Mot de passe
+                        .md-form
+                            i.fa.fa-lock.prefix
+                            input#confirmPassword.form-control(type='password')
+                            label(for='confirmPassword') Confirmation de mot de passe
+                        .text-center
+                            button.btn.btn-mine S'inscrire
+                    div
+                        p
+                            | Vous avez déjà un compte? 
+                            a(href='/login') Connectez-vous
+                .col-md-4
+        .col-md-1

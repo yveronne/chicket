@@ -15,12 +15,17 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "consign": "^0.1.6",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "express-joi-validator": "^2.0.0",
+    "express-session": "^1.15.6",
     "jade": "^1.11.0",
     "joi": "^13.0.2",
     "mongoose": "^4.13.8",
     "node-datetime": "^2.0.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.4.0",
     "payload-validator": "^1.0.4"
   },
   "main": "main.js",

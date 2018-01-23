@@ -185,6 +185,13 @@ router.route("/users")
         });
 
 router.route("/register")
+        .get(function(req, res){
+            
+            if(req.body){
+                res.render('register', {title : "S'inscrire | Chicket"});
+            }
+        })
+        
         .post(function (req, res) { //add a new user
 
             if (req.body) {
@@ -276,6 +283,12 @@ router.route("/login")
             } else {
                 var response = {"error": true, "message": "the body is empty"};
                 res.json(response);
+            }
+        })
+        
+        .get(function(req, res){
+            if(req.body){
+                res.render('login' , {title : "Se connecter | Chicket"});
             }
         });
 

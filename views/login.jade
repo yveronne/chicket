@@ -3,3 +3,37 @@
     To change this template file, choose Tools | Templates
     and open the template in the editor.
      
+extends layout
+
+block content
+
+    .row
+        .col-md-1
+        .col-md-10
+            .row
+                .col-md-12
+                    a(href='/') Accueil
+                    | >
+                    a(href='/login') Se connecter
+            br
+            .row
+                .col-md-4
+                .col-md-4
+                    form
+                        p.h5.text-center.mb-4 Se connecter
+                        .md-form
+                            i.fa.fa-envelope.prefix
+                            input#email.form-control(type='text')
+                            label(for='email') Addresse mail
+                        .md-form
+                            i.fa.fa-lock.prefix
+                            input#password.form-control(type='password')
+                            label(for='password') Mot de passe
+                        .text-center
+                            button.btn.btn-mine Se connecter
+                    div
+                        p
+                            | Vous n'avez pas encore de compte? 
+                            a(href='/register') Inscrivez-vous
+                .col-md-4
+        .col-md-1
