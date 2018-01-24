@@ -19,23 +19,31 @@ block content
             .row
                 .col-md-4
                 .col-md-4
-                    form
+                    form(action='/register', method='post')
                         p.h5.text-center.mb-4 S'inscrire
+                        
+                        if message.length>0
+                            .alert.alert-danger #{message}
+                                
                         .md-form
                             i.fa.fa-user.prefix
-                            input#name.form-control(type='text')
-                            label(for='name') Noms et Prénoms
+                            input#lastName.form-control(type='text', name='lastName')
+                            label(for='lastName') Noms
+                        .md-form
+                            i.fa.fa-user.prefix
+                            input#firstName.form-control(type='text', name='firstName')
+                            label(for='firstName') Prénoms
                         .md-form
                             i.fa.fa-envelope.prefix
-                            input#email.form-control(type='text')
+                            input#email.form-control(type='text', name='email')
                             label(for='email') Addresse mail
                         .md-form
                             i.fa.fa-phone.prefix
-                            input#phoneNumber.form-control(type='text')
+                            input#phoneNumber.form-control(type='text', name='phoneNumber')
                             label(for='phoneNumber') Numéro de téléphone
                         .md-form
                             i.fa.fa-bus.prefix
-                            select#town.mdb-select.ml-5
+                            select#city.mdb-select.ml-5(name='city')
                                 option(value='', disabled='', selected='') Choisir votre ville
                                 option(value='Yaounde') Yaoundé
                                 option(value='Douala') Douala
@@ -43,7 +51,7 @@ block content
                                 option(value='Dschang') Bertoua
                         .md-form
                             i.fa.fa-car.prefix
-                            select#district.mdb-select.ml-5
+                            select#district.mdb-select.ml-5(name='district')
                                 option(value='', disabled='', selected='') Choisir votre quartier
                                 option(value='nlongkak') Nlongkak
                                 option(value='douala') Etoudi
@@ -51,18 +59,14 @@ block content
                                 option(value='fougerolles') Fougerolles
                         .md-form
                             i.fa.fa-address-book.prefix
-                            input#street.form-control(type='text')
-                            label(for='street') Secteur
+                            input#sector.form-control(type='text', name='sector')
+                            label(for='sector') Secteur
                         .md-form
                             i.fa.fa-lock.prefix
-                            input#password.form-control(type='password')
+                            input#password.form-control(type='password', name='password')
                             label(for='password') Mot de passe
-                        .md-form
-                            i.fa.fa-lock.prefix
-                            input#confirmPassword.form-control(type='password')
-                            label(for='confirmPassword') Confirmation de mot de passe
                         .text-center
-                            button.btn.btn-mine S'inscrire
+                            button.btn.btn-mine(type='submit') S'inscrire
                     div
                         p
                             | Vous avez déjà un compte? 

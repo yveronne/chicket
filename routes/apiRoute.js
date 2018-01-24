@@ -88,9 +88,121 @@ const HistoriquePM_model = Joi.object().keys({
 router.get("/", function (req, res) {
 
     //res.json({"error": false, "message": "Hello World"});
-    res.render('home', {title : 'Accueil | Chicket'});
+    res.render('home', {title: 'Accueil | Chicket', user: req.user});
 
 });
+
+router.route("/register")
+        .get(function (req, res) {
+
+            /*if (req.body) {
+             res.render('register', {title: "S'inscrire | Chicket"});
+             }*/
+
+            if (req.session.passport.user !== null) {
+                res.redirect('/', {title: 'Accueil | Chicket'})
+            } else {
+                res.render('register', {title: "S'inscire | Chicket"})
+            }
+        })
+
+        .post(function (req, res, next) { //add a new user
+
+            if (req.body) {
+
+                var db = new userDB();
+                var dbPM = new pmDB();
+                var response = {"test": "test test"};
+
+                var bodyTest = Joi.validate(req.body, user_model);
+
+                if (bodyTest.error) {
+
+                    res.json({"Error": true, "Message": bodyTest.error});
+
+                } else {
+
+                    db.email = req.body.email;
+                    db.password = require('crypto')
+                            .createHash('sha1')
+                            .update(req.body.password)
+                            .digest('base64');
+
+                    db.firstName = req.body.firstName;
+                    db.lastName = req.body.lastName;
+                    db.phoneNumber = req.body.phoneNumber;
+                    db.city = req.body.city;
+                    db.district = req.body.district;
+                    db.sector = req.body.sector;
+                    db.balance = 200000;
+
+                    db.save(function (err) {
+                        if (err) {
+                            response = {"error": true, "message": err.errmsg};
+                            res.json(response);
+
+                        } else {
+
+                            dbPM.transactionType = "Solde de départ du compte PouletMoney";
+                            dbPM.amount = 200000;
+                            dbPM.date = getDateNow();
+                            dbPM.previousBalance = 0;
+                            dbPM.newBalance = 200000;
+                            dbPM.clientID = db._id;
+
+                            dbPM.save(function (er) {
+
+                                if (er) {
+
+                                    response = {"error": true, "message": er.errmsg};
+
+                                } else {
+
+                                    response = {"error": false, "message": "User added successfully and his balance is 200000 FCFA!"};
+
+                                }
+                            });
+                        }
+
+                    });
+
+                }
+
+            } else {
+
+                response = {"error": true, "message": "the body is empty"};
+                res.json(response);
+
+            }
+
+        });
+
+router.route("/login")
+        .post(function (req, res) {
+            if (req.body) {
+                var cryptPassword = require('crypto').createHash('sha1').update(req.body.password).digest('base64');
+
+                userDB.find({"email": req.body.email, "password": cryptPassword}, function (err, data) {
+                    if (err) {
+                        response = {"error": true, "message": err.errmsg};
+                    } else if (data.length === 0) {
+                        response = {"error": false, "message": "No user found"};
+                    } else {
+                        response = {"error": false, "message": "Client logged in successfully"};
+                    }
+                    res.json(response);
+                });
+            } else {
+                var response = {"error": true, "message": "the body is empty"};
+                res.json(response);
+            }
+        })
+
+        .get(function (req, res) {
+            if (req.body) {
+                res.render('login', {title: "Se connecter | Chicket"});
+            }
+        });
 
 
 
@@ -184,113 +296,7 @@ router.route("/users")
 
         });
 
-router.route("/register")
-        .get(function(req, res){
-            
-            if(req.body){
-                res.render('register', {title : "S'inscrire | Chicket"});
-            }
-        })
-        
-        .post(function (req, res) { //add a new user
 
-            if (req.body) {
-
-                var db = new userDB();
-                var dbPM = new pmDB();
-                var response = {"test": "test test"};
-
-                var bodyTest = Joi.validate(req.body, user_model);
-
-                if (bodyTest.error) {
-
-                    res.json({"Error": true, "Message": bodyTest.error});
-
-                } else {
-
-                    db.email = req.body.email;
-                    db.password = require('crypto')
-                            .createHash('sha1')
-                            .update(req.body.password)
-                            .digest('base64');
-
-                    db.firstName = req.body.firstName;
-                    db.lastName = req.body.lastName;
-                    db.phoneNumber = req.body.phoneNumber;
-                    db.city = req.body.city;
-                    db.district = req.body.district;
-                    db.sector = req.body.sector;
-                    db.balance = 200000;
-
-                    db.save(function (err) {
-                        if (err) {
-                            response = {"error": true, "message": err.errmsg};
-                            res.json(response);
-
-                        } else {
-
-                            dbPM.transactionType = "Solde de départ du compte PouletMoney";
-                            dbPM.amount = 200000;
-                            dbPM.date = getDateNow();
-                            dbPM.previousBalance = 0;
-                            dbPM.newBalance = 200000;
-                            dbPM.clientID = db._id;
-
-                            dbPM.save(function (er) {
-
-                                if (er) {
-
-                                    response = {"error": true, "message": er.errmsg};
-
-                                } else {
-
-                                    response = {"error": false, "message": "User added successfully and his balance is 200000 FCFA!"};
-
-                                }
-
-                                res.json(response);
-                            });
-                        }
-
-                    });
-
-                }
-
-            } else {
-
-                response = {"error": true, "message": "the body is empty"};
-                res.json(response);
-
-            }
-
-        });
-
-router.route("/login")
-        .post(function (req, res) {
-            if (req.body) {
-                var cryptPassword = require('crypto').createHash('sha1').update(req.body.password).digest('base64');
-
-                userDB.find({"email": req.body.email, "password": cryptPassword}, function (err, data) {
-                    if (err) {
-                        response = {"error": true, "message": err.errmsg};
-                    } else if (data.length === 0) {
-                        response = {"error": false, "message": "No user found"};
-                    } else {
-                        response = {"error": false, "message": "Client logged in successfully"};
-                    }
-                    res.json(response);
-                });
-            } else {
-                var response = {"error": true, "message": "the body is empty"};
-                res.json(response);
-            }
-        })
-        
-        .get(function(req, res){
-            if(req.body){
-                res.render('login' , {title : "Se connecter | Chicket"});
-            }
-        });
 
 router.route("/offers/:id")
         .get(function (req, res) { //Get the offer by ID
@@ -389,7 +395,7 @@ router.route("/offers")
             });
 
         });
-        
+
 
 router.route("/offers/create")
         .post(function (req, res) { //add a new offer
@@ -598,7 +604,7 @@ router.route("/demands/:clientID")
 
             var response = {};
 
-            demandDB.find({"clientID" : req.params.clientID}, function (err, data) {
+            demandDB.find({"clientID": req.params.clientID}, function (err, data) {
 
                 if (err) {
                     response = {"error": true, "message": err.errmsg};
@@ -700,7 +706,7 @@ router.route('/demands/:id')
                 res.json(response);
             }
 
-        }); 
+        });
 
 
 router.route("/demands")
@@ -774,7 +780,7 @@ router.route("/commands/:clientID")
 
             var response = {};
 
-            commandDB.find({"clientID" : req.params.clientID}, function (err, data) {
+            commandDB.find({"clientID": req.params.clientID}, function (err, data) {
 
                 if (err) {
                     response = {"error": true, "message": err.errmsg};
@@ -785,7 +791,7 @@ router.route("/commands/:clientID")
             });
 
         });
-        
+
 router.route("/commands/:id")
         .put(function (req, res) { //update a command
 
@@ -848,7 +854,7 @@ router.route("/commands/:id")
             }
 
         })
-        
+
         .delete(function (req, res) {
 
             var response = {};
@@ -948,7 +954,7 @@ router.route("/historic/:clientID")
         .get(function (req, res) { //Get the historic by the client id
 
             var response = {};
-            pmDB.find({"clientID" : req.params.clientID}, function (err, data) {
+            pmDB.find({"clientID": req.params.clientID}, function (err, data) {
 
                 if (err) {
                     response = {"error": true, "message": err.errmsg};
@@ -1023,21 +1029,21 @@ router.route("/historic")
             }
 
         });
-        
+
 router.route("/caddy/:clientID")
-        .get(function(req,res){
+        .get(function (req, res) {
             var response = {};
-            
-            commandDB.find({"clientID" : req.params.clientID}, function(err, data){
-                if(err) {
-                    response = {"error":true, "message":err.errmsg};
+
+            commandDB.find({"clientID": req.params.clientID}, function (err, data) {
+                if (err) {
+                    response = {"error": true, "message": err.errmsg};
                 } else {
                     response = {"error": false, "message": data};
                 }
                 res.json(response);
             });
-            
-});
+
+        });
 
 
 module.exports = router;

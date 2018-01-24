@@ -19,18 +19,22 @@ block content
             .row
                 .col-md-4
                 .col-md-4
-                    form
+                    form(action='/login', method='post')
                         p.h5.text-center.mb-4 Se connecter
+                        
+                        if message.length>0
+                            .alert.alert-danger #{message}
+                            
                         .md-form
                             i.fa.fa-envelope.prefix
-                            input#email.form-control(type='text')
+                            input#email.form-control(type='text', name='email')
                             label(for='email') Addresse mail
                         .md-form
                             i.fa.fa-lock.prefix
-                            input#password.form-control(type='password')
+                            input#password.form-control(type='password', name='password')
                             label(for='password') Mot de passe
                         .text-center
-                            button.btn.btn-mine Se connecter
+                            button.btn.btn-mine(type='submit') Se connecter
                     div
                         p
                             | Vous n'avez pas encore de compte? 

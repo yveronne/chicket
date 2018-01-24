@@ -3,24 +3,51 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var express     =   require("express");
-var consign     =   require("consign");
-var app         =   express();
-var bodyParser  =   require("body-parser");
+/* global passport */
+
+var express = require("express");
+var mongoose = require("mongoose");
+var app = express();
+const PORT = 3500;
 var path = require('path');
 
-const PORT = 3500;
+var passport = require('passport');
+var flash = require('connect-flash');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({"extended" : false}));
+var consign = require("consign");
+var cookieParser = require("cookie-parser");
+var bodyParser = require("body-parser");
+var session = require('express-session');
+
+var configDB = require('./config/database');
+
+//Configuration
+mongoose.connect(configDB.url); //Connexion à la base de données
+
+require('./config/passport')(passport);
+
+app.use(cookieParser());  //Lire les cookies
+app.use(bodyParser());  
 
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-var router      =   express.Router();
-app.use('/',router);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({"extended": false}));
 
-app.use( require( './routes/apiRoute.js' ) ) ;
+//On gère Passport
+app.use(session({secret : 'vivelepoulet'}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
-app.listen(PORT , () => console.log ('Connecté sur le port ' +  PORT));
+var router = express.Router();
+app.use('/', router);
+
+
+//Routes
+//app.use(require('./routes/apiRoute.js'));
+require('./routes/routes.js')(app, passport);
+
+app.listen(PORT, () => console.log('Connecté sur le port ' + PORT));

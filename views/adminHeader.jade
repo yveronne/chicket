@@ -17,15 +17,15 @@
                     input.form-control.w-75.ml-3(type='text', placeholder='Rechercher une offre', aria-label='Search')
             .col-md.align-self-center
                 img(src='src/images/compteIcone.png')
-                a(href='/login') Mon compte
-                img(src='src/images/caddie.png')
-                a(href='panier.html') Mon panier
+                a(href='/account') Mon compte
         .row.nav
             .col-md
-                a#accueilLink(href='/') ACCUEIL
+                a#accueilLink(href='/adminHome') ACCUEIL
             .col-md
-                a#offerLink(href='liste_offres.html') LES OFFRES
+                a#offerLink(href='liste_offres_admin.html') LES OFFRES
             .col-md
-                a#prestationLink(href='liste_demandes_client.html') MES DEMANDES
+                a#prestationLink(href='liste_prestations.html') LES PRESTATIONS
+            .col-md
+                a#DemandLink(href='liste_demandes.html') LES DEMANDES
     .col-md-1
 br

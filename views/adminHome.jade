@@ -1,0 +1,203 @@
+//- 
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+extends adminLayout
+include mixins
+
+block content
+
+    .row
+        .col-md-1
+        
+        .col-md-10
+            #carousel-accueil.carousel.slide.carousel-fade(data-ride='carousel')
+                ol.carousel-indicators
+                    li(data-target='#carousel-accueil', data-slide-to='0', class='active')
+                    li(data-target='#carousel-accueil', data-slide-to='1')
+                    li(data-target='#carousel-accueil', data-slide-to='2')
+                    
+                .carousel-inner(role='listbox')
+                    .carousel-item.active
+                        img.d-block.w-100.img-fluid(src='src/images/elevage.png', alt='first-slide')
+                    .carousel-item
+                        img.d-block.w-100.img-fluid(src='src/images/livraison2.png', alt='second-slide')
+                    .carousel-item
+                        img.d-block.w-100.img-fluid(src='src/images/paiement2.png', alt='third-slide')
+                        
+                a.carousel-control-prev(role='button', href='#carousel-accueil', data-slide='prev')
+                    span.carousel-control-prev-icon(aria-hidden='true')
+                    span.sr-only Previous
+                
+                a.carousel-control-next(role='button', href='#carousel-accueil', data-slide='next')
+                    span.carousel-control-next-icon(aria-hidden='true')
+                    span.sr-only Next
+                                       
+        .col-md-1
+    br
+    
+    .row
+        .col-md-1
+        .col-md-10.homeTitleDiv
+            +ligne()
+            h3 NOS OFFRES
+            +ligne()
+        .col-md-1
+    br
+    
+    .row
+        .col-md-1
+        .col.card
+            img.img-fluid(src='src/images/pouletDeFermeEchantillon.jpg', alt='Card image cap')
+            .card-body
+                h4.card-title Poulets de ferme
+                h6 Gros (5Kg)
+                h6 4 500FCFA/pièce
+                h6 Date de publication: 27/01/18
+                a.btn.btn-mine(href='#') Détails de l'offre
+        .col.card
+            img.img-fluid(src='src/images/pondeuse.jpg', alt='Card image cap')
+            .card-body
+                h4.card-title Pondeuses 
+                h6 Moyen (3Kg)
+                h6 2 500FCFA/pièce
+                h6 Date de publication: 27/01/18
+                a.btn.btn-mine(href='#') Détails de l'offre
+        .col.card
+            img.img-fluid(src='src/images/pouleDuVillage.jpg', alt='Card image cap')
+            .card-body
+                h4.card-title Poules du village 
+                h6 Gros (5Kg)
+                h6 4 775FCFA/pièce
+                h6 Date de publication: 27/01/18
+                a.btn.btn-mine(href='#') Détails de l'offre
+        .col-md-1       
+    br
+    
+    .row
+        .col-md-8
+        .col-md-3
+            a.btn.btn-mine(href='#')
+                |Voir les autres offres 
+                i.fa.fa-arrow-right(aria-hidden='true')
+        .col-md-1
+    br
+    
+    .row
+        .col-md-1
+        .col-md-10.homeTitleDiv
+            +ligne()
+            h3 NOS PARTENAIRES
+            +ligne()
+        .col-md-1
+    br
+    
+    .row
+        .col-md-1
+        .col-md-10
+            // Carousel Wrapper
+            #multi-item-example.carousel.slide.carousel-multi-item(data-ride='carousel')
+                // Controls
+                .controls-top
+                    a.btn-floating(href='#multi-item-example', data-slide='prev')
+                        i.fa.fa-chevron-left
+                    a.btn-floating(href='#multi-item-example', data-slide='next')
+                        i.fa.fa-chevron-right
+                // /.Controls
+                // Indicators
+                ol.carousel-indicators
+                    li.active(data-target='#multi-item-example', data-slide-to='0')
+                    li(data-target='#multi-item-example', data-slide-to='1')
+                    li(data-target='#multi-item-example', data-slide-to='2')
+                // /.Indicators
+                // Slides
+                .row.carousel-inner(role='listbox')
+                    // First slide
+                    .col-md-12.carousel-item.active
+                        .row
+                            .col-md-4
+                                .card
+                                    img.img-fluid(src='https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg', alt='Card image cap')
+                                    .card-body
+                                        h4.card-title Card title
+                                        p.card-text
+                                            | Some quick example text to build on the card title and make up the bulk of the card's content.
+                                        a.btn.btn-mine Button
+                            .col-md-4.clearfix.d-none.d-md-block
+                                .card
+                                    img.img-fluid(src='https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg', alt='Card image cap')
+                                    .card-body
+                                        h4.card-title Card title
+                                        p.card-text
+                                            | Some quick example text to build on the card title and make up the bulk of the card's content.
+                                        a.btn.btn-mine Button
+                            .col-md-4.clearfix.d-none.d-md-block
+                                .card
+                                    img.img-fluid(src='https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg', alt='Card image cap')
+                                    .card-body
+                                        h4.card-title Card title
+                                        p.card-text
+                                            | Some quick example text to build on the card title and make up the bulk of the card's content.
+                                        a.btn.btn-mine Button
+                    // /.First slide
+                    // Second slide
+                    .col-md-12.carousel-item
+                        .row
+                            .col-md-4
+                                .card
+                                    img.img-fluid(src='https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg', alt='Card image cap')
+                                    .card-body
+                                        h4.card-title Card title
+                                        p.card-text
+                                            | Some quick example text to build on the card title and make up the bulk of the card's content.
+                                        a.btn.btn-mine Button
+                            .col-md-4.clearfix.d-none.d-md-block
+                                .card
+                                    img.img-fluid(src='https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg', alt='Card image cap')
+                                    .card-body
+                                        h4.card-title Card title
+                                        p.card-text
+                                            | Some quick example text to build on the card title and make up the bulk of the card's content.
+                                        a.btn.btn-mine Button
+                            .col-md-4.clearfix.d-none.d-md-block
+                                .card
+                                    img.img-fluid(src='https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg', alt='Card image cap')
+                                    .card-body
+                                        h4.card-title Card title
+                                        p.card-text
+                                            | Some quick example text to build on the card title and make up the bulk of the card's content.
+                                        a.btn.btn-mine Button
+                    // /.Second slide
+                    // Third slide
+                    .col-md-12.carousel-item
+                        .row
+                            .col-md-4
+                                .card
+                                    img.img-fluid(src='https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg', alt='Card image cap')
+                                    .card-body
+                                        h4.card-title Card title
+                                        p.card-text
+                                            | Some quick example text to build on the card title and make up the bulk of the card's content.
+                                        a.btn.btn-mine Button
+                            .col-md-4.clearfix.d-none.d-md-block
+                                .card
+                                    img.img-fluid(src='https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg', alt='Card image cap')
+                                    .card-body
+                                        h4.card-title Card title
+                                        p.card-text
+                                            | Some quick example text to build on the card title and make up the bulk of the card's content.
+                                        a.btn.btn-mine Button
+                            .col-md-4.clearfix.d-none.d-md-block
+                                .card
+                                    img.img-fluid(src='https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg', alt='Card image cap')
+                                    .card-body
+                                        h4.card-title Card title
+                                        p.card-text
+                                            | Some quick example text to build on the card title and make up the bulk of the card's content.
+                                        a.btn.btn-mine Button
+                    // /.Third slide
+                // /.Slides
+            // /.Carousel Wrapper
+        .col-md-1
+
+

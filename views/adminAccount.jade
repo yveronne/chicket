@@ -1,0 +1,67 @@
+//- 
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+     
+extends adminLayout
+
+block content
+    .row
+        .col-md-1
+        .col-md-10
+            .row
+                .col-md-12
+                    a(href='/adminHome') Accueil
+                    | >
+                    a(href='/adminAccount') Mon compte
+            br
+            .row
+                .col-md-3
+                .col-md-6
+                    p
+                    h4 Informations personnelles
+                    i.fa.fa-pencil(aria-hidden='true')
+                    a(href='#') Modifier mes infos
+                    p
+                    br
+                    .md-form
+                        input#name.form-control(type='text', disabled='true')
+                        label(for='name') #{user.lastName} #{user.firstName}
+                    .md-form
+                        input#email.form-control(type='text', disabled='true')
+                        label(for='email') #{user.email}
+                    .md-form
+                        input#email.form-control(type='text', disabled='true')
+                        label(for='phoneNumer') #{user.phoneNumber}
+                    div
+                        label Ville
+                        select.browser-default(disabled='true')
+                            option(value='', disabled='', selected='') Choisir une ville
+                            option(value='1') Bertoua
+                            option(value='2') Douala
+                            option(value='3') Yaoundé
+                    br
+                    div
+                        label Quartier
+                        select.browser-default(disabled='true')
+                            option(value='', disabled='', selected='') Choisir un quartier
+                            option(value='1') Bastos
+                            option(value='2') Nlongkak
+                            option(value='3') Tsinga
+                    br
+                    .md-form
+                        input#sector.form-control(type='text', disabled='true')
+                        label(for='sector') #{user.sector}
+                    br
+                    p.h4
+                        i.fa.fa-credit-card(aria-hidden='true')
+                        |  Compte PouletMoney
+                    br
+                    p
+                        | Solde du compte : 
+                        span#solde.h5 #{user.balance} 
+                        span F CFA
+                    .text-center
+                        button.btn.btn-mine Recharger mon compte
+                .col-md-3
+        .col-md-1

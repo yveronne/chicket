@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 import mongoose, { Schema } from 'mongoose';
-import passport from 'passport';
 
 var promise = mongoose.connect('mongodb://localhost/chicket', {
     useMongoClient: true
