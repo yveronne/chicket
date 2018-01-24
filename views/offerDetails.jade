@@ -1,0 +1,89 @@
+//- 
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+extends layout
+
+block content
+    .row
+        .col-md-1
+        .col-md-10
+            .row
+                .col-md-12
+                    a(href='/') Accueil
+                    | >
+                    a(href='/offers') Liste des offres
+                    | >
+                    a(href='/detailOffer/#{offer._id}') Détails de l'offre
+            br
+            .row
+                .col-md-10
+                    p.h4 Détails de l'offre
+                    br
+                    .row
+                        .col-md-5
+                            img.img-fluid(src='images/pondeuse.jpg')
+                        .col-md-5
+                            .row
+                                .col-md-12
+                                    h5 Type de poulet
+                                    |  Pondeuse 
+                                    br
+                                    h5 Grosseur
+                                    |  Très gros (7Kg) 
+                                    br
+                                    h5 Quantité en stock
+                                    |  25 
+                                    br
+                                    h5 Prix unitaire
+                                    |  7 825 F CFA 
+                                    br
+                                    h5 Possibilité de réduction
+                                    |  500 par poulets à partir de 10 poulets 
+                                    br
+                                    h5 Date de publication
+                                    |  27/01/2018 
+                                    br
+                                    .text-center
+                                        button.btn.btn-mine(data-toggle='modal', data-target='#modalAddToCart') Choisir cette offre
+                                    // Modal d'ajout au panier
+                                    #modalAddToCart.modal.fade(tabindex='-1', role='dialog', aria-labelledby='mymodLabel', aria-hidden='true')
+                                        .modal-dialog(role='document')
+                                            .modal-content
+                                                .modal-header.text-center
+                                                    h4.modal-title.w-100.font-bold Ajouter au panier
+                                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                                        span(aria-hidden='true') ×
+                                                .modal-body.mx-3
+                                                    .md-form
+                                                        input#chickenType.form-control(value='Pondeuse', type='text', disabled='true')
+                                                        label.active(for='chickenType') Type de poulet
+                                                    .md-form
+                                                        input#chickenSize.form-control(value='Très gros (7Kg)', type='text', disabled='true')
+                                                        label.active(for='chickenSize') Grosseur
+                                                    .md-form
+                                                        input#offerQuantity.form-control(value='25', type='text', disabled='true')
+                                                        label.active(for='offerQuantity') Quantité en stock
+                                                    .md-form
+                                                        input#offerPrice.form-control(value='7 825', type='text', disabled='true')
+                                                        label.active(for='offerPrice') Prix unitaire (en F CFA)
+                                                    .md-form
+                                                        input#offerReduction.form-control(value='500 par poulets à partir de 10 poulets', type='text', disabled='true')
+                                                        label.active(for='offerReduction') Possibilité de réduction
+                                                    .md-form
+                                                        input#clientQuantity.form-control(type='text')
+                                                        label.active(for='clientQuantity') Quantité
+                                                    .form-group
+                                                        input#deplumageCheckbox(type='checkbox')
+                                                        label(for='deplumageCheckbox') Déplumer les poulets
+                                                    .form-group
+                                                        input#decoupageCheckbox(type='checkbox')
+                                                        label(for='decoupageCheckbox') Découper les poulets
+                                                    .form-group
+                                                        input#fumageCheckbox(type='checkbox')
+                                                        label(for='fumageCheckbox') Fumer les poulets
+                                                .modal-footer.d-flex.justify-content-center
+                                                    button.btn.btn-mine Ajouter au panier
+                                    // Fin du modal d'ajout au panier
+                .col-md-2
+        .col-md-1

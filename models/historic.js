@@ -22,4 +22,4 @@ var historicSchema = new Schema({
 });
 
 
-export default mongoose.model('historicr', historicSchema);
+export default mongoose.model('historic', historicSchema);

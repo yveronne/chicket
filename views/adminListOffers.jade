@@ -1,0 +1,78 @@
+//- 
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+
+extends adminLayout
+
+block content
+    .row
+        .col-md-1
+        .col-md-10
+            .row
+                .col-md-12
+                    a(href='/') Accueil
+                    | >
+                    a(href='/offers') Liste des offres
+            br
+            .row
+                .col-md-2
+                    .row
+                        .col-md-12
+                            #filterDiv Filtrer par:
+                            br
+                            br
+                            .filterTitle Type de poulet
+                            div
+                                input#pondeuseCheckbox(type='checkbox')
+                                label(for='pondeuseCheckbox') Pondeuses
+                                br
+                                input#fermeCheckbox(type='checkbox')
+                                label(for='fermeCheckbox') Poulets de ferme
+                                br
+                                input#villageCheckbox(type='checkbox')
+                                label(for='chairCheckbox') Poules du village
+                                br
+                            br
+                            .filterTitle Grosseur
+                            div
+                                input#bigCheckbox(type='checkbox')
+                                label(for='bigCheckbox') Gros
+                                br
+                                input#mediumCheckbox(type='checkbox')
+                                label(for='mediumCheckbox') Moyen
+                                br
+                                input#smallCheckbox(type='checkbox')
+                                label(for='smallCheckbox') Petit
+                                br
+                            br
+                            .filterTitle Prix unitaire
+                            .range-field
+                                input(type='range', min='0', max='10000')
+                            div (Choisir le prix maximum)
+                            br
+                            .filterTitle Quantité
+                            .range-field
+                                input(type='range', min='0', max='200')
+                            div (Choisir la quantité maximale)
+                .col-md-10
+                
+                    - for (var j=0 ; j<offers.length; j=j+3)
+
+                        .row
+
+                            - for (var i=j; i<j+3 && i< offers.length; i++)
+
+                                .col-md-1
+                                .col-md-3.card
+                                    img.img-fluid(src='https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg', alt='Card image cap')
+                                    .card-body
+                                        h4.card-title #{offers[i].chickenType} 
+                                        h6 #{offers[i].chickenSize}
+                                        h6 #{offers[i].quantity} F CFA / pièce
+                                        h6 Date de publication: #{offers[i].publicationDate}
+                                        a(href='#') Modifier l'offre
+                                        a.btn.btn-mine(href='/detailOffer/#{offers[i]._id}') Détails de l'offre
+                        br
+
+        .col-md-1

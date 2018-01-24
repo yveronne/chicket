@@ -11,7 +11,7 @@ var promise = mongoose.connect('mongodb://localhost/chicket', {
 
 //Définition du schéma
 var offerSchema = new Schema ({
-    chichenType : String,
+    chickenType : String,
     chickenSize : String,
     unitPrice : Number,
     quantity : Number,
@@ -19,7 +19,7 @@ var offerSchema = new Schema ({
         type : Date , default : Date.now
     },
     reductionCondition : Number,
-    reductionAmout : Number
+    reductionAmount : Number
 });
 
 //Exportation du modèle

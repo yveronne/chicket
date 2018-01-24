@@ -7,55 +7,55 @@ extends adminLayout
 
 block content
     .row
-        .col-md-1
-        .col-md-10
-            .row
-                .col-md-12
-                    a(href='/adminHome') Accueil
-                    | >
-                    a(href='/listOffers') Offres
-                    | >
-                    a(href='/createOffer') Créer une offre
-            br
-            .row
-                .col-md-5
-                    form(action='/createOffer', method='post')
-                        p.h4 Créer une offre
-                        br
-                        .md-form
-                            select#chickenType.mdb-select(name='chickenType')
-                                option(value='', disabled='', selected='') Type de poulet
-                                option(value='1') Poulet de ferme
-                                option(value='2') Pondeuse
-                                option(value='3') Poule du village
-                        br
-                        .md-form
-                            select#chickenSize.mdb-select(name='chickenSize')
-                                option(value='', disabled='', selected='') Grosseur
-                                option(value='1') Petit
-                                option(value='2') Moyen
-                                option(value='3') Gros
-                                option(value='4') Très gros
-                        br
-                        .file-field.md-form
-                            .btn.btn-mine.btn-sm
-                                span Url de l'image
-                                input(type='file')
-                            .file-path-wrapper
-                                input.file-path.validate(type='text', placeholder='Ajoutez une image')
-                        .md-form
-                            input#quantity.form-control(type='text', name='quantity')
-                            label(for='quantity') Quantité en stock
-                        .md-form
-                            input#price.form-control(type='text', name='unitPrice')
-                            label(for='price') Prix unitaire
-                        .md-form
-                            input#reductionCondition.form-control(type='text', name='reductionCondition')
-                            label(for='reductionCondition') Conditions de réduction
-                        .md-form
-                            input#reductionAmount.form-control(type='text', name='reductionAmount')
-                            label(for='reductionAmount') Montant de la réduction
-                        .text-center
-                            button.btn.btn-mine(type='submit') Créer l'offre
-                .col-md-4
+    .col-md-1
+    .col-md-10
+        .row
+            .col-md-12
+                a(href='/adminHome') Accueil
+                | >
+                a(href='/listOffers') Offres
+                | >
+                a(href='/createOffer') Créer une offre
+        br
+        .row
+            .col-md-5
+                form(action='createOffer', method='post')
+                    p.h4 Créer une offre
+                    br
+                    .md-form
+                        select#chickenType.mdb-select(name='chickenType')
+                            option(value='', disabled='', selected='') Type de poulet
+                            option(value='Poulets de ferme') Poulets de ferme
+                            option(value='Pondeuses') Pondeuses
+                            option(value='Poules du village') Poules du village
+                    br
+                    .md-form
+                        select#chickenSize.mdb-select(name='chickenSize')
+                            option(value='', disabled='', selected='') Grosseur
+                            option(value='Petit') Petit
+                            option(value='Moyen') Moyen
+                            option(value='Gros') Gros
+                            option(value='Très gros') Très gros
+                    br
+                    .file-field.md-form
+                        .btn.btn-mine.btn-sm
+                            span Url de l'image
+                            input(type='file')
+                        .file-path-wrapper
+                            input.file-path.validate(type='text', placeholder='Ajoutez une image')
+                    .md-form
+                        input#quantite.form-control(type='text',name='quantite')
+                        label(for='quantite') Quantité en stock
+                    .md-form
+                        input#unitPrice.form-control(type='text', name='unitPrice')
+                        label(for='unitPrice') Prix unitaire
+                    .md-form
+                        input#reductionCondition.form-control(type='text', name='reductionCondition')
+                        label(for='reductionCondition') Condition de réduction
+                    .md-form
+                        input#reductionAmount.form-control(type='text', name='reductionAmount')
+                        label(for='reductionAmount') Montant de la réduction
+                    .text-center
+                        button.btn.btn-mine Créer l'offre
+            .col-md-4
     .col-md-1
