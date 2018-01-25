@@ -66,7 +66,7 @@ const prestation_model = Joi.object().keys({
 const demande_model = Joi.object().keys({
     chickenType: Joi.string().required(),
     chickenSize: Joi.string().required(),
-    quantity: Joi.number().required(),
+    quantite: Joi.number().required(),
     publicationDate: Joi.date(),
     clientID: Joi.string().required()
 });
@@ -216,6 +216,46 @@ module.exports = function (app, passport){
                     res.render('offerDetails', {offer : offer});
                 }
             });
+    });
+    
+    app.get('/createDemand', isLoggedIn, function(req, res){
+       res.render('createDemand', {user : req.user}); 
+    });
+    
+    app.post('/createDemand/:clientID', isLoggedIn, function(req, res){
+            var db = new demandDB();
+            var response = {"test": "test test"};
+            req.body.clientID = req.params.clientID;
+
+            var bodyTest = Joi.validate(req.body, demande_model);
+
+            if (bodyTest.error) {
+
+                res.json({"Error": true, "Message": bodyTest.error});
+
+            } else {
+
+                db.chickenType = req.body.chickenType;
+                db.chickenSize = req.body.chickenSize;
+                db.quantity = req.body.quantite;
+                db.publicationDate = getDateNow();
+                db.clientID = req.body.clientID;
+
+                db.save(function (err) {
+
+                    if (err) {
+                        response = {"error": true, "message": err.errmsg};
+                        res.json(response);
+
+                    } else {
+
+                        response = {"error": false, "message": "Demand added with success!"};
+                        res.json(response);
+                    }
+
+                });
+
+            }
     });
 };
 

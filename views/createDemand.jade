@@ -1,0 +1,45 @@
+//- 
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+
+extends layout
+
+block content
+
+    .row
+        .col-md-1
+        .col-md-10
+            .row
+                .col-md-12
+                    a(href='/') Accueil
+                    | >
+                    a(href='/createDemand') Créer une demande
+            br
+            .row
+                .col-md-5
+                    form(action='/createDemand/#{user._id}', method='post')
+                        p.h4 Créer une demande
+                        br
+                        .md-form
+                            select#chickenTypeDemand.mdb-select(name='chickenType')
+                                option(value='', disabled='', selected='') Type de poulet
+                                option(value='Poulets de ferme') Poulets de ferme
+                                option(value='Pondeuse') Pondeuses
+                                option(value='Poules du village') Poules du village
+                        br
+                        .md-form
+                            select#chickenSizeDemand.mdb-select(name='chickenSize')
+                                option(value='', disabled='', selected='') Grosseur
+                                option(value='Petit') Petit
+                                option(value='Moyen') Moyen
+                                option(value='Gros') Gros
+                                option(value='Très gros') Très gros
+                        br
+                        .md-form
+                            input#quantity.form-control(type='text', name='quantite')
+                            label(for='quantity') Quantité
+                        .text-center
+                            button.btn.btn-mine Poster ma demande
+                .col-md-3
+    .col-md-1
