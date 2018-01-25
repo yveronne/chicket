@@ -1,0 +1,51 @@
+//- 
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+extends adminLayout
+
+block content
+
+    .row
+        .col-md-1
+        .col-md-10
+            .row
+                .col-md-12
+                    a(href='/adminHome') Accueil
+                    | >
+                    a(href='/prestations') Liste des prestations
+            br
+            .row
+                .col-md-12
+                    p
+                    h4 Liste des prestations
+                    p
+                    table.table.table-striped
+                        thead
+                            tr
+                                th #
+                                th Nom de la prestation
+                                th Prix (en F CFA)
+                                th Quantité de poulets
+                                th Durée de la prestation
+                                th Possibilité de réduction
+                                th Statut de la prestation
+                                th Modifier la prestation
+                                
+                        tbody
+                    
+                        - for(var i=0; i<prestations.length; i++)
+                    
+                            tr
+                                th(scope='row') #{i+1}
+                                td #{prestations[i].name}
+                                td #{prestations[i].unitPrice}
+                                td #{prestations[i].chickenQuantity}
+                                td #{prestations[i].duration}
+                                td #{prestations[i].unitPrice}
+                                td #{prestations[i].reductionAmount} F CFA par lots de #{prestations[i].reductionCondition} poulet(s)
+                                td #{prestations[i].status}
+                                td #{prestations[i].unitPrice}
+                                td
+                                    a
+                                        i.fa.fa-pencil(aria-hidden='true')

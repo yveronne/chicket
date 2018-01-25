@@ -1,0 +1,47 @@
+//- 
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+     
+extends adminLayout
+
+block content
+
+    .row
+        .col-md-1
+        .col-md-10
+            .row
+                .col-md-12
+                    a(href='/adminHome') Accueil
+                    | >
+                    a(href='/listPrestations') Prestations
+                    | >
+                    a(href='/createPrestation') Créer une prestation
+            br
+            .row
+                .col-md-5
+                    form(action='/createPrestation', method='post')
+                        p.h4 Créer une prestation
+                        br
+                        .md-form
+                            input#prestationName.form-control(type='text', name='name')
+                            label(for='prestationName') Nom de la prestation
+                        .md-form
+                            input#prestationPrice.form-control(type='text', name='unitPrice')
+                            label(for='prestationPrice') Prix (en F CFA)
+                        .md-form
+                            input#quantity.form-control(type='text', name='chickenQuantity')
+                            label(for='quantity') Quantité de poulets
+                        .md-form
+                            input#duration.form-control(type='text', name='duration')
+                            label(for='duration') Durée de la prestation
+                        .md-form
+                            input#reductionCondition.form-control(type='text', name='reductionCondition')
+                            label(for='reductionCondition') Condition de réduction
+                        .md-form
+                            input#reductionAmount.form-control(type='text', name='reductionAmount')
+                            label(for='reductionAmount') Montant de la réduction
+                        .text-center
+                            button.btn.btn-mine Créer la prestation
+                .col-md-3
+    .col-md-1

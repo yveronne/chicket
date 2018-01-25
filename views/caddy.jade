@@ -1,0 +1,66 @@
+//- 
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+extends layout
+
+block content
+
+    .row
+        .col-md-1
+        .col-md-10
+            .row
+                .col-md-12
+                    a(href='/') Accueil
+                    | >
+                    a(href='/caddy') Mon panier
+            br
+            .row
+                .col-md-10
+                    p
+                    h4 Mon panier
+                    p
+                    table.table.table-striped
+                        thead
+                            tr
+                                th #
+                                th Type de poulet
+                                th Grosseur
+                                th Quantité
+                                th Prix unitaire (en F CFA)
+                                th Réduction (en F CFA)
+                                th Prestations à effectuer
+                                th Supprimer du panier
+                        tbody
+                        
+                        - for (var i=0; i<commands.length; i++)
+                        
+                            tr
+                                th(scope='row') #{i+1}
+                                td #{offers[i].chickenType}
+                                td #{offers[i].chickenSize}
+                                td #{commands[i].quantity}
+                                td #{offers[i].unitPrice}
+                                td 2000
+                                td #{prestations[i].name}
+                                td
+                                    a
+                                        i.fa.fa-remove
+                    button.btn.btn-mine(data-toggle='modal', data-target='#modalDetails') Valider mes achats
+                // Modal permettant de voir le net à payer et la date limite de livraison
+                #modalDetails.modal.fade(tabindex='-1', role='dialog', aria-labelledby='mymodalLabel', aria-hidden='true')
+                    .modal-dialog(role='document')
+                        .modal-content
+                            .modal-header.text-center
+                                h4.modal-title.w-100.font-bold Informations sur les achats
+                                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                    span(aria-hidden='true') ×
+                            .modal-body.mx-3
+                                .md-form
+                                    h5 Net à payer (en F CFA)
+                                    input#amount.form-control(value='18 750', type='text', disabled='true')
+                                .md-form
+                                    h5 Date limite de livraison
+                                    input#date.form-control(value='2018-10-09', type='date', disabled='true')
+                            .modal-footer.d-flex.justify-content-center
+                                button.btn.btn-mine Payer

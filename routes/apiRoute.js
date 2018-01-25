@@ -564,7 +564,7 @@ router.route("/prestations/create")
                 } else {
 
                     db.name = req.body.name;
-                    db.status = req.body.status;
+                    db.status = true;
                     db.unitPrice = req.body.unitPrice;
                     db.chickenQuantity = req.body.chickenQuantity;
                     db.date = getDateNow();

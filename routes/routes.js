@@ -202,6 +202,27 @@ module.exports = function (app, passport){
             });
     });
     
+    app.get('/adminOffers', adminLoggedIn, function(req, res){
+       var response = {};
+
+            offerDB.find({}, function (err, data) {
+
+                if (err) {
+                    response = {"error": true, "message": err.errmsg};
+                    res.json(response);
+                } else {
+                    //response = {"error": false, "message": data};
+                    var offers = [];
+                    data.forEach(function(offer){
+                        offers.push(offer);
+                    });
+                    response = {"error" : false, "message" : offers};
+                    res.render('adminListOffers', {offers : offers});
+                }
+                //res.json(response);
+            });
+    });
+    
     app.get('/detailOffer', function(req, res){
         
         var response = {};
@@ -256,6 +277,97 @@ module.exports = function (app, passport){
                 });
 
             }
+    });
+    
+    app.get('/prestations', adminLoggedIn, function(req, res){
+       var response = {};
+
+            prestationDB.find({}, function (err, data) {
+
+                if (err) {
+                    response = {"error": true, "message": err};
+                    res.json(response);
+                } else {
+                    var prestations = [];
+                    data.forEach(function(prestation){
+                        prestations.push(prestation);
+                    });
+                    response = {"error": false, "message": prestations};
+                    res.render('adminListPrestations', {prestations : prestations});
+                }
+                
+            }); 
+    });
+    
+    app.get('/createPrestation', adminLoggedIn, function(req, res){
+       res.render('adminCreatePrestation'); 
+    });
+    
+    app.post('/createPrestation', function(req, res){
+        var db = new prestationDB();
+                var response = {"test": "test test"};
+                req.body.status = true;
+
+                var bodyTest = Joi.validate(req.body, prestation_model);
+
+                if (bodyTest.error) {
+
+                    res.json({"Error": true, "Message": bodyTest.error});
+
+                } else {
+
+                    db.name = req.body.name;
+                    db.status = req.body.status;
+                    db.unitPrice = req.body.unitPrice;
+                    db.chickenQuantity = req.body.chickenQuantity;
+                    db.date = getDateNow();
+                    db.duration = req.body.duration;
+                    db.reductionAmount = req.body.reductionAmount;
+                    db.reductionCondition = req.body.reductionCondition;
+
+                    db.save(function (err) {
+
+                        if (err) {
+                            response = {"error": true, "message": err.errmsg};
+                            res.json(response);
+
+                        } else {
+
+                            response = {"error": false, "message": "Prestation added with success!"};
+                            res.json(response);
+                        }
+
+                    });
+
+                }
+    });
+    
+    app.get('/caddy', isLoggedIn, function(req, res){
+        var response = {};
+
+            commandDB.find({"clientID": req.user._id}, function (err, data) {
+                if (err) {
+                    response = {"error": true, "message": err};
+                    res.json(response);
+                } else {
+                    var commands = [];
+                    var offers = [];
+                    var prestations = [];
+                    response = {"error": false, "message": data};
+                    data.forEach(function(command){
+                       commands.push(command);
+                       offerDB.findById(command.clientID , function(err, offer){
+                           if(err) throw err;
+                           else offers.push(offer);
+                       });
+                       prestationDB.findById(command.prestationID , function(err, prestation){
+                           if(err) throw err;
+                           else prestations.push(prestation);
+                       });
+                    });
+                    res.render('caddy', {commands : commands, offers: offers, prestations: prestations, user : req.user});
+                }
+            });
     });
 };
 
