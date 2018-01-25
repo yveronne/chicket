@@ -202,11 +202,11 @@ module.exports = function (app, passport){
             });
     });
     
-    app.get('/detailOffer/:id', function(req, res){
+    app.get('/detailOffer', function(req, res){
         
         var response = {};
         
-        offerDB.findById(req.params.id, function (err, offer) {
+        offerDB.findById(req.query.offerID, function (err, offer) {
 
                 if (err) {
                     response = {"error": true, "message": err.errmsg};

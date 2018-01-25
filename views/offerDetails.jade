@@ -14,7 +14,7 @@ block content
                     | >
                     a(href='/offers') Liste des offres
                     | >
-                    a(href='/detailOffer/#{offer._id}') Détails de l'offre
+                    a(href='/detailOffer?offerID=#{offer._id}') Détails de l'offre
             br
             .row
                 .col-md-10
@@ -22,27 +22,27 @@ block content
                     br
                     .row
                         .col-md-5
-                            img.img-fluid(src='images/pondeuse.jpg')
+                            img.img-fluid(src='src/images/pondeuse.jpg')
                         .col-md-5
                             .row
                                 .col-md-12
                                     h5 Type de poulet
-                                    |  Pondeuse 
+                                    |  #{offer.chickenType} 
                                     br
                                     h5 Grosseur
-                                    |  Très gros (7Kg) 
+                                    |  #{offer.chickenSize}  
                                     br
                                     h5 Quantité en stock
-                                    |  25 
+                                    |  #{offer.quantity}  
                                     br
                                     h5 Prix unitaire
-                                    |  7 825 F CFA 
+                                    |  #{offer.unitPrice} F CFA par unité
                                     br
                                     h5 Possibilité de réduction
-                                    |  500 par poulets à partir de 10 poulets 
+                                    |  #{offer.reductionAmount} F CFA par lot de #{offer.reductionCondition} poulet(s)   
                                     br
                                     h5 Date de publication
-                                    |  27/01/2018 
+                                    |  #{offer.publicationDate}  
                                     br
                                     .text-center
                                         button.btn.btn-mine(data-toggle='modal', data-target='#modalAddToCart') Choisir cette offre
@@ -56,22 +56,22 @@ block content
                                                         span(aria-hidden='true') ×
                                                 .modal-body.mx-3
                                                     .md-form
-                                                        input#chickenType.form-control(value='Pondeuse', type='text', disabled='true')
+                                                        input#chickenType.form-control(value='#{offer.chickenType} ', type='text', disabled='true')
                                                         label.active(for='chickenType') Type de poulet
                                                     .md-form
-                                                        input#chickenSize.form-control(value='Très gros (7Kg)', type='text', disabled='true')
+                                                        input#chickenSize.form-control(value='#{offer.chickenSize} ', type='text', disabled='true')
                                                         label.active(for='chickenSize') Grosseur
                                                     .md-form
-                                                        input#offerQuantity.form-control(value='25', type='text', disabled='true')
+                                                        input#offerQuantity.form-control(value='#{offer.quantity}', type='text', disabled='true')
                                                         label.active(for='offerQuantity') Quantité en stock
                                                     .md-form
-                                                        input#offerPrice.form-control(value='7 825', type='text', disabled='true')
+                                                        input#offerPrice.form-control(value='#{offer.unitPrice}', type='text', disabled='true')
                                                         label.active(for='offerPrice') Prix unitaire (en F CFA)
                                                     .md-form
-                                                        input#offerReduction.form-control(value='500 par poulets à partir de 10 poulets', type='text', disabled='true')
+                                                        input#offerReduction.form-control(value='#{offer.reductionAmount} F CFA par lot de #{offer.reductionCondition} poulet(s)', type='text', disabled='true')
                                                         label.active(for='offerReduction') Possibilité de réduction
                                                     .md-form
-                                                        input#clientQuantity.form-control(type='text')
+                                                        input#clientQuantity.form-control(type='text', name='quantite')
                                                         label.active(for='clientQuantity') Quantité
                                                     .form-group
                                                         input#deplumageCheckbox(type='checkbox')
