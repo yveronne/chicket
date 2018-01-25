@@ -228,13 +228,25 @@ module.exports = function (app, passport){
         var response = {};
         
         offerDB.findById(req.query.offerID, function (err, offer) {
-
+                var prestations = [];
                 if (err) {
                     response = {"error": true, "message": err.errmsg};
                     res.json(response);
                 } else {
-                    response = {"error": false, "message": offer};
-                    res.render('offerDetails', {offer : offer});
+                    prestationDB.find({}, function(err, data){
+                        if(err) throw err;
+                        else {
+                            data.forEach(function(prestation){
+                                prestations.push(prestation); 
+                            });
+                            response = {"error": false, "message": offer};
+                            res.render('offerDetails', {offer : offer, prestations : prestations});
+                        }
+                       
+                    });
+                    //response = {"error": false, "message": prestations};
+                    //res.render('offerDetails', {offer : offer, prestations : prestations});
+                    //res.json(response);
                 }
             });
     });
@@ -356,7 +368,7 @@ module.exports = function (app, passport){
                     response = {"error": false, "message": data};
                     data.forEach(function(command){
                        commands.push(command);
-                       offerDB.findById(command.clientID , function(err, offer){
+                       offerDB.findById(command.offerID , function(err, offer){
                            if(err) throw err;
                            else offers.push(offer);
                        });

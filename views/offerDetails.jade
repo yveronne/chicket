@@ -73,17 +73,18 @@ block content
                                                     .md-form
                                                         input#clientQuantity.form-control(type='text', name='quantite')
                                                         label.active(for='clientQuantity') Quantité
-                                                    .form-group
-                                                        input#deplumageCheckbox(type='checkbox')
-                                                        label(for='deplumageCheckbox') Déplumer les poulets
-                                                    .form-group
-                                                        input#decoupageCheckbox(type='checkbox')
-                                                        label(for='decoupageCheckbox') Découper les poulets
-                                                    .form-group
-                                                        input#fumageCheckbox(type='checkbox')
-                                                        label(for='fumageCheckbox') Fumer les poulets
+                                                    
+                                                    - for (var i=0; i<prestations.length; i++)
+                                                    
+                                                        .form-group
+
+                                                            input(type='checkbox', value= prestations[i].name, id= prestations[i].name)
+                                                            label(for= prestations[i].name) #{prestations[i].name}
+                                                        
                                                 .modal-footer.d-flex.justify-content-center
-                                                    button.btn.btn-mine Ajouter au panier
+                                                    button.btn.btn-mine#addToCartButton Ajouter au panier
                                     // Fin du modal d'ajout au panier
                 .col-md-2
         .col-md-1
+    script.
+        var id = !{JSON.stringify(offer._id)};
