@@ -20,6 +20,10 @@
         });
         var parameters = {quantity : quantity, offerID : offerID, prestations : prestations};
        console.log(parameters);
+       console.log(prestations[0], prestations[1]);
+       $.get('/addToCart', parameters, function(data){
+           console.log('okay post');
+       });
        
     });
     

@@ -381,6 +381,27 @@ module.exports = function (app, passport){
                 }
             });
     });
+    
+    app.get('/addToCart', isLoggedIn, function(req, res){
+        var offerID = req.query.offerID;
+        var clientID = req.user._id;
+        var quantity = req.query.quantity;
+        var prestations = req.query.prestations;
+        var command = new commandDB();
+        prestations.forEach(function(prestationName){
+           prestationDB.findOne({"name" : prestationName, "status" : true}, function(err, prestation){
+              var command = new commandDB();
+              command.offerID = offerID;
+              command.clientID = clientID;
+              command.quantity = quantity;
+              command.prestationID = prestation._id;
+              command.save(function(err){
+                 if (err) throw err;
+              });
+           }); 
+        });
+        res.json({"error" : false, "message" : 'Parfait'});
+    });
 };
 
 //Middleware pour vérifier si l'utilisateur est déjà connecté
