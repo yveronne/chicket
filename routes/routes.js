@@ -11,7 +11,22 @@ var payload = require('payload-validator');
 const Joi = require('joi');
 const expressJoi = require('express-joi-validator');
 var dateTime = require('node-datetime');
-var async = require('async');
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service : 'gmail',
+    auth :{
+        user : 'projet.afenspy@gmail.com', 
+        pass : 'afenspy2017'
+    }
+});
+
+var mailOptions = {
+    from : 'projet.afenspy@gmail.com',
+    to : 'yveronne@yahoo.fr',
+    subject : 'Nouvelle demande postée | Chicket',
+    text : 'Une nouvelle demande a été postée sur Chicket. Veuillez vous connecter'
+};
 
 import mongoose from 'mongoose';
 import userDB from './../models/user.js';
@@ -284,6 +299,10 @@ module.exports = function (app, passport){
                     } else {
 
                         response = {"error": false, "message": "Demand added with success!"};
+                        transporter.sendMail(mailOptions, function(error, info){
+                           if (error) console.log(error);
+                           else console.log('Email sent ' + info.response);
+                        });
                         res.json(response);
                     }
 
@@ -427,7 +446,8 @@ module.exports = function (app, passport){
        }) ;
     });
     
-    app.get('/demands', function(req, res){
+    app.get('/demands', adminLoggedIn, function(req, res){
+        var response={};
         demandDB.find({}, function (err, demands) {
 
                 if (err) {
@@ -435,7 +455,7 @@ module.exports = function (app, passport){
                     res.json(response);
                 } else {
                     response = {"error": false, "message": demands};
-                    res.render('adminListDemands', demands);
+                    res.render('adminListDemands', {demands : demands} );
                 }
                 //res.json(response);
             });
