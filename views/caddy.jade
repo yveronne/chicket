@@ -20,16 +20,16 @@ block content
                     p
                     h4 Mon panier
                     p
-                    table.table.table-striped
+                    table.table.table-striped#cartTable
                         thead
                             tr
                                 th #
-                                th Type de poulet
-                                th Grosseur
+                                th Type de poulet (id de l'offre)
+                                th Grosseur (id de l'offre)
                                 th Quantité
-                                th Prix unitaire (en F CFA)
+                                th Prix unitaire (en F CFA) (id de l'offre)
                                 th Réduction (en F CFA)
-                                th Prestation à effectuer
+                                th Prestation à effectuer (id de la prestation)
                                 th Supprimer du panier
                         tbody
                         
@@ -37,12 +37,12 @@ block content
                         
                             tr
                                 th(scope='row') #{i+1}
-                                td #{offers[i].chickenType}
-                                td #{offers[i].chickenSize}
-                                td #{commands[i].quantity}
-                                td #{offers[i].unitPrice}
-                                td 2000
-                                td #{prestations[i].name}
+                                td.one #{commands[i].offerID}
+                                td.two #{commands[i].offerID}
+                                td.three #{commands[i].quantity}
+                                td.four #{commands[i].offerID}
+                                td.five 2000
+                                td.six #{commands[i].prestationID}
                                 td
                                     a
                                         i.fa.fa-remove

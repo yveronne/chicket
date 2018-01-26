@@ -11,6 +11,7 @@ var payload = require('payload-validator');
 const Joi = require('joi');
 const expressJoi = require('express-joi-validator');
 var dateTime = require('node-datetime');
+var async = require('async');
 
 import mongoose from 'mongoose';
 import userDB from './../models/user.js';
@@ -365,21 +366,20 @@ module.exports = function (app, passport){
                     var commands = [];
                     var offers = [];
                     var prestations = [];
+                    var response = {};
                     response = {"error": false, "message": data};
                     data.forEach(function(command){
                        commands.push(command);
-                       offerDB.findById(command.offerID , function(err, offer){
-                           if(err) throw err;
-                           else offers.push(offer);
-                       });
-                       prestationDB.findById(command.prestationID , function(err, prestation){
-                           if(err) throw err;
-                           else prestations.push(prestation);
-                       });
+                       prestations.push(command.prestationID);
+                       offers.push(command.offerID);
                     });
-                    res.render('caddy', {commands : commands, offers: offers, prestations: prestations, user : req.user});
+                    
+                    //console.log(offers[0]);
+                    res.render('caddy', {commands : commands, user : req.user});
                 }
             });
+            
+            
     });
     
     app.get('/addToCart', isLoggedIn, function(req, res){
@@ -401,6 +401,30 @@ module.exports = function (app, passport){
            }); 
         });
         res.json({"error" : false, "message" : 'Parfait'});
+    });
+    
+    app.get('/offer', function(req, res){
+        var offerID = req.query.offerID;
+       offerDB.findById(offerID, function(err, offer){
+           if (err) throw err;
+           else {
+               console.log(offer);
+               res.json(offer);
+               
+           }
+       }) ;
+    });
+    
+    app.get('/prestation', function(req, res){
+       var prestationID = req.query.prestationID;
+       prestationDB.findById(prestationID, function(err, prestation){
+           if (err) throw err;
+           else {
+               console.log(prestation);
+               res.json(prestation);
+               
+           }
+       }) ;
     });
 };
 
