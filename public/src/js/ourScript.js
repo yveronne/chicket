@@ -27,7 +27,7 @@
        
     });
     
-    $('#cartTable').bind('click', function(){
+    //$('#cartTable').bind('click', function(){
        $('#cartTable tbody > tr').each(function(){
           var offerID = $(this).find('td.one').html();
           var parameters = {offerID : offerID};
@@ -45,7 +45,7 @@
               prestationName.html(prestation.name);
           });
        }); 
-    });
+    //});
     
   });
   
