@@ -1,0 +1,64 @@
+//- 
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
+
+extends adminLayout
+
+block content
+    .row
+        .col-md-1
+        .col-md-10
+            .row
+                .col-md-12
+                    a(href='/adminHome') Accueil
+                    | >
+                    a(href='/demands') Liste des demandes
+            br
+            .row
+                .col-md-2
+                    .row
+                        .col-md-12
+                            #filterDiv Filtrer par:
+                            br
+                            .filterTitle Type de poulet
+                            div
+                                input#pondeuseCheckbox(type='checkbox')
+                                label(for='pondeuseCheckbox') Pondeuses
+                                br
+                                input#fermeCheckbox(type='checkbox')
+                                label(for='fermeCheckbox') Poulets de ferme
+                                br
+                                input#villageCheckbox(type='checkbox')
+                                label(for='villageCheckbox') Poules du village
+                                br
+                            br
+                            .filterTitle Quantité nécessaire
+                            .range-field
+                                input(type='range', min='0', max='200')
+                            div (Choisir la quantité maximale)
+                .col-md-10
+                    table.table.table-hover
+                        thead
+                            tr
+                                th #
+                                th Type de poulet
+                                th Grosseur
+                                th Quantité nécessaire
+                                th Date de publication
+                                th Supprimer la demande
+                        tbody
+                        
+                        - for(var i=0 ; i<demands.length; i++) 
+                            
+                            tr
+                                th(scope='row') 1
+                                td #{demands[i].chickenType}
+                                td #{demands[i].chickenSize}
+                                td #{demands[i].quantity}
+                                td #{demands[i].publicationDate}
+                                td
+                                    a
+                                        i.fa.fa-remove
+
+        .col-md-1

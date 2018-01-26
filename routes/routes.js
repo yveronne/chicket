@@ -426,6 +426,20 @@ module.exports = function (app, passport){
            }
        }) ;
     });
+    
+    app.get('/demands', function(req, res){
+        demandDB.find({}, function (err, demands) {
+
+                if (err) {
+                    response = {"error": true, "message": err.errmsg};
+                    res.json(response);
+                } else {
+                    response = {"error": false, "message": demands};
+                    res.render('adminListDemands', demands);
+                }
+                //res.json(response);
+            });
+    });
 };
 
 //Middleware pour vérifier si l'utilisateur est déjà connecté
